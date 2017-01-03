@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 82654063ad5c305479b2783fc2d48c4c
+timeCreated: 1483328744
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - leftDoor: {fileID: 1596100168647410, guid: beab2dd1dc90529448e74709b67cb387, type: 2}
+  - rightDoor: {instanceID: 0}
+  - upDoor: {instanceID: 0}
+  - newDoor: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,15 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum SwipeDirection {
+    NONE = 0,
+    LEFT = 1,
+    RIGHT = 2,
+    UP = 4,
+    DOWN = 8
+}
+
 public class SwipeManager : MonoBehaviour {
+    public SwipeDirection swipeDirection;
 	public Vector2 startPos;
 	public Vector2 direction;
 	public bool directionChosen;
-
-	public GameObject tester;
-
-	void Start(){
-	}
 
 	void Update() {
 		if (Input.touchCount > 0) {
@@ -31,34 +35,29 @@ public class SwipeManager : MonoBehaviour {
 				directionChosen = true;
 				break;
 			}
-		}
-		// Swipe by Touch
-
-		/*if (Input.GetMouseButtonDown (0)) {
-			startPos = Input.mousePosition;
-			directionChosen = false;
-		}
-
-		if (Input.GetMouseButtonUp(0)) {
-			Vector2 mousePositionV2 = Input.mousePosition;
-
-			direction = mousePositionV2 - startPos;
-			directionChosen = true;
-		}*/
-        // Mouse Test
-
+		} // Swipe by Touch
+        
 		if (directionChosen) {
 			if (direction.x > 0 && direction.x > direction.y) {
-				tester.transform.Translate (5,0,0); // Move Tester object right
+                swipeDirection = SwipeDirection.RIGHT;
 				Debug.Log ("Swiped Right");
-
-				// Swiped Right
 			}
-			if (direction.x < 0 && direction.x > direction.y) {
-				tester.transform.Translate (-5,0,0); // Move Tester object left
-				Debug.Log ("Swiped Left");
-				// Swiped Left
+			else if (direction.x < 0 && direction.x > direction.y) {
+                swipeDirection = SwipeDirection.LEFT;
+                Debug.Log ("Swiped Left");
 			}
-		}
+            else if (direction.y > 0 && direction.y > direction.x) {
+                swipeDirection = SwipeDirection.UP;
+                Debug.Log("Swiped Up");
+            }
+            else if (direction.y < 0 && direction.y > direction.x) {
+                swipeDirection = SwipeDirection.DOWN;
+                Debug.Log("Swiped Down");
+            }
+        } // Set SwipeDirection
 	}
+
+    public bool IsSwiping(SwipeDirection dir)  {
+        return dir == swipeDirection;
+    } // Return if Swiped or not
 }
