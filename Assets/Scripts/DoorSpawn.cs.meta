@@ -1,13 +1,14 @@
 fileFormatVersion: 2
 guid: 82654063ad5c305479b2783fc2d48c4c
-timeCreated: 1483328744
+timeCreated: 1483450952
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - leftDoor: {fileID: 1596100168647410, guid: beab2dd1dc90529448e74709b67cb387, type: 2}
-  - rightDoor: {instanceID: 0}
-  - upDoor: {instanceID: 0}
+  - leftDoor: {fileID: 1877087304492536, guid: e168566f01d9ba6438318ea8f1700de1, type: 2}
+  - rightDoor: {fileID: 1010038032114720, guid: 2fe65cc20db93df48a53b5eb2fd39b4b,
+      type: 2}
+  - upDoor: {fileID: 1512754558606790, guid: c730ae24c5908514d92ab05cc4b6c570, type: 2}
   - newDoor: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}

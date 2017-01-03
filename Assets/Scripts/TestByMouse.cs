@@ -4,22 +4,21 @@ using UnityEngine;
 
 public enum SwipeDirectionbyMouse
 {
-    NONE = 0,
-    LEFT = 1,
-    RIGHT = 2,
-    UP = 4,
-    DOWN = 8
+    NONE=0, LEFT, RIGHT, UP, DOWN
 }
 
 public class TestByMouse : MonoBehaviour {
-    public SwipeDirectionbyMouse swipeDirection { set; get; }
+    public SwipeDirectionbyMouse swipeDirection;
     public bool directionChosen;
     public Vector2 startPos;
     public Vector2 direction;
     public bool isSwiping;
 
+    void Start() {
+        DoorMover.mouseTest = GameObject.Find("GameController").GetComponent<TestByMouse>();
+    }
+
     void Update() {
-        swipeDirection = SwipeDirectionbyMouse.NONE;
         Swipe();
     }
 
@@ -28,7 +27,6 @@ public class TestByMouse : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             startPos = Input.mousePosition;
-            //directionChosen = false;
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -36,32 +34,32 @@ public class TestByMouse : MonoBehaviour {
             Vector2 mousePositionV2 = Input.mousePosition;
 
             direction = mousePositionV2 - startPos;
-            //directionChosen = true;
+            directionChosen = true;
+        }
 
-            if (direction.x > 0 && Mathf.Abs(direction.x) > Mathf.Abs(direction.y)) {
+        if (directionChosen) {
+            if ((direction.x > 0) && (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))) {
                 swipeDirection = SwipeDirectionbyMouse.RIGHT;
                 //Debug.Log("Swiped Right");
             }
-            if (direction.x < 0 && Mathf.Abs(direction.x) > Mathf.Abs(direction.y)) {
+            else if ((direction.x < 0) && (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))) {
                 swipeDirection = SwipeDirectionbyMouse.LEFT;
                 //Debug.Log("Swiped Left");
             }
-            if (direction.y > 0 && Mathf.Abs(direction.x) < Mathf.Abs(direction.y)) {
+            else if ((direction.y > 0) && (Mathf.Abs(direction.x) < Mathf.Abs(direction.y))) {
                 swipeDirection = SwipeDirectionbyMouse.UP;
                 //Debug.Log("Swiped Up");
             }
-            if (direction.y < 0 && Mathf.Abs(direction.x) < Mathf.Abs(direction.y)) {
+            else if ((direction.y < 0) && (Mathf.Abs(direction.x) < Mathf.Abs(direction.y))) {
                 swipeDirection = SwipeDirectionbyMouse.DOWN;
                 //Debug.Log("Swiped Down");
             }
         } // Set SwipeDirection
     }
-    /*public bool IsSwiping(SwipeDirectionbyMouse dir) {
-        if (dir == swipeDirection) {
-            isSwiping = true;
-        }
+
+    public bool IsSwiping(SwipeDirectionbyMouse dir) {
         return dir == swipeDirection;
-    } // Return if Swiped or not */
+    }
 }
     
 
