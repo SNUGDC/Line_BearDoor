@@ -62,6 +62,7 @@ public class DoorSpawn : MonoBehaviour {
     {
         if ((swipe.swipeDirection == dir) && (newDoor.name == door+"SwipeDoor_Dummy(Clone)"))
         {
+            Debug.Log ("Correct!");
             Destroy(newDoor);
             swipe.directionChosen = false;
             AddScore();
@@ -74,6 +75,7 @@ public class DoorSpawn : MonoBehaviour {
     {
         if ((swipe.swipeDirection != dir) && (newDoor.name == door + "SwipeDoor_Dummy(Clone)") && (swipe.swipeDirection != SwipeDirectionbyMouse.NONE))
         {
+            Debug.Log ("Fail");
             Destroy(newDoor);
             swipe.directionChosen = false;
             StopCoroutine(coroutine);
