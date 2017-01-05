@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DoorMover : MonoBehaviour {
-    private Transform tf;
     private float nextTime = 0.0f;
     private float deltaTime = 0.01f;
 
+    public Transform tf;
     public static TestByMouse mouseTest;
+    public static Hunger hunger;
 
     void Start() { 
         tf = GetComponent<Transform>();
-        //mouseTest = gameObject.AddComponent<TestByMouse>();
         tf.localScale = new Vector3(0.1f, 0.1f, 0.1f);
     }
 
@@ -23,6 +23,9 @@ public class DoorMover : MonoBehaviour {
             }
         }
         if(tf.localScale == new Vector3(1.3f, 1.3f, 1.3f)) {
+            Debug.Log("isHit");
+            hunger.hunger -= 100;
+            hunger.hungerbar.rectTransform.sizeDelta -= new Vector2(40, 0);
             Destroy(gameObject);
         }
     }

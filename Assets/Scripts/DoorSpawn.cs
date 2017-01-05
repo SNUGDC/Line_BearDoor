@@ -8,11 +8,13 @@ public class DoorSpawn : MonoBehaviour {
     public GameObject rightDoor;
     public GameObject upDoor;
     public GameObject newDoor;
+
     public int score;
     public Text scoreText;
 
     public TestByMouse swipe;
-    private IEnumerator coroutine;
+    public Hunger hg;
+    public IEnumerator coroutine;
 
     void Start() {
         scoreText.text = "Score:";
@@ -25,31 +27,35 @@ public class DoorSpawn : MonoBehaviour {
         SwipeDoor();
     }
 
-    IEnumerator SpawnWaves() {
+    IEnumerator SpawnWaves()
+    {
         float SpawnWait = 2.0f;
         GameObject[] Door = new GameObject[3];
         Door[0] = leftDoor;
         Door[1] = rightDoor;
         Door[2] = upDoor;
 
-        while (true) { //Input Spawn Requirements 
-            Instantiate(Door[Random.Range(0,3)], new Vector3(0, 0, 0), Quaternion.identity);
+        while (hg.hunger >= 0)
+        { //Input Spawn Requirements 
+            Instantiate(Door[Random.Range(0, 3)], new Vector3(0, 0, 0), Quaternion.identity);
             yield return new WaitForSeconds(SpawnWait);
         }
     }
 
     void SwipeDoor()
     {
-        DestroyDoor(SwipeDirectionbyMouse.LEFT, "Left");
-        DestroyDoor(SwipeDirectionbyMouse.RIGHT, "Right");
-        DestroyDoor(SwipeDirectionbyMouse.UP, "Up");
-        //Destroy and AddScore if Correctly Swiped
+        if(newDoor != null)
+        {
+            DestroyDoor(SwipeDirectionbyMouse.LEFT, "Left");
+            DestroyDoor(SwipeDirectionbyMouse.RIGHT, "Right");
+            DestroyDoor(SwipeDirectionbyMouse.UP, "Up");
+            //Destroy and AddScore if Correctly Swiped
 
-        DestroyDoorifIncorrect(SwipeDirectionbyMouse.LEFT, "Left");
-        DestroyDoorifIncorrect(SwipeDirectionbyMouse.RIGHT, "Right");
-        DestroyDoorifIncorrect(SwipeDirectionbyMouse.UP, "Up");
-        //Destroy if Incorrectly Swiped
-
+            DestroyDoorifIncorrect(SwipeDirectionbyMouse.LEFT, "Left");
+            DestroyDoorifIncorrect(SwipeDirectionbyMouse.RIGHT, "Right");
+            DestroyDoorifIncorrect(SwipeDirectionbyMouse.UP, "Up");
+            //Destroy if Incorrectly Swiped
+        }
     }
 
     void DestroyDoor(SwipeDirectionbyMouse dir, string door)
