@@ -33,11 +33,6 @@ public class Hunger : MonoBehaviour {
                 nextTime = Time.time + deltaTime;
                 hunger -= 1;
                 hungerbar.rectTransform.sizeDelta -= new Vector2(0.4f, 0);
-                /*if (isHit == true)
-                {
-                    hunger -= 100;
-                    hungerbar.rectTransform.sizeDelta -= new Vector2(40, 0);
-                }*/
             }
         }
 
@@ -47,22 +42,18 @@ public class Hunger : MonoBehaviour {
             restart_button.gameObject.SetActive(true);
             home_button.gameObject.SetActive(true);
             game_over_text.gameObject.SetActive(true);
+            restart_button.onClick.RemoveAllListeners();
             restart_button.onClick.AddListener(RestartOnClick);
+            home_button.onClick.RemoveAllListeners();
             home_button.onClick.AddListener(HomeOnClick);
         }
+        hunger_text.onClick.RemoveAllListeners();
         hunger_text.onClick.AddListener(HungerOnClick);
     }
 
     void RestartOnClick()
     {
-        doorSpawn.scoreText.text = "Score: ";
-        doorSpawn.score = 0;
-        hunger = 1000;
-        hungerbar.rectTransform.sizeDelta = new Vector2(400, 12.5f);
-        restart_button.gameObject.SetActive(false);
-        home_button.gameObject.SetActive(false);
-        game_over_text.gameObject.SetActive(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("testScene");
     }
 
     void HomeOnClick()
