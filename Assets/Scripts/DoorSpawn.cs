@@ -10,16 +10,20 @@ public class DoorSpawn : MonoBehaviour {
     public GameObject newDoor;
 
     public int score;
+    public bool isCorrect;
     public Text scoreText;
+    public Text gameoverText;
 
     public TestByMouse swipe;
     public Hunger hg;
+    public DoorMover doorMover;
     public IEnumerator coroutine;
 
     void Start() {
-        scoreText.text = "Score:";
-        coroutine = SpawnWaves();
-        StartCoroutine(coroutine);
+        DoorMover.doorSpawn = gameObject.GetComponent<DoorSpawn>();
+        scoreText.text = "Score: 0";
+        gameoverText.text = "0";
+        SpawnWaves();
     }
 
     void Update() {
@@ -27,19 +31,18 @@ public class DoorSpawn : MonoBehaviour {
         SwipeDoor();
     }
 
-    IEnumerator SpawnWaves()
+    public void SpawnWaves()
     {
-        float SpawnWait = 2.0f;
         GameObject[] Door = new GameObject[3];
         Door[0] = leftDoor;
         Door[1] = rightDoor;
         Door[2] = upDoor;
-
-        while (hg.hunger >= 0)
-        { //Input Spawn Requirements 
+        
+        if (hg.hunger > 0)
+        {
             Instantiate(Door[Random.Range(0, 3)], new Vector3(0, 0, 0), Quaternion.identity);
-            yield return new WaitForSeconds(SpawnWait);
         }
+        
     }
 
     void SwipeDoor()
@@ -60,37 +63,38 @@ public class DoorSpawn : MonoBehaviour {
 
     void DestroyDoor(SwipeDirectionbyMouse dir, string door)
     {
-        if ((swipe.swipeDirection == dir) && (newDoor.name == door+"SwipeDoor_Dummy(Clone)"))
+        if ((swipe.swipeDirection == dir) && (newDoor.name == door+"SwipeDoor(Clone)"))
         {
             Debug.Log ("Correct!");
             Destroy(newDoor);
             swipe.directionChosen = false;
+            isCorrect = true;
             AddScore();
-            StopCoroutine(coroutine);
-            StartCoroutine(coroutine);
+            SpawnWaves();
         }
     }
 
     void DestroyDoorifIncorrect(SwipeDirectionbyMouse dir, string door)
     {
-        if ((swipe.swipeDirection != dir) && (newDoor.name == door + "SwipeDoor_Dummy(Clone)") && (swipe.swipeDirection != SwipeDirectionbyMouse.NONE))
+        if ((swipe.swipeDirection != dir) && (newDoor.name == door + "SwipeDoor(Clone)") && (swipe.swipeDirection != SwipeDirectionbyMouse.NONE))
         {
             Debug.Log ("Fail");
             Destroy(newDoor);
             swipe.directionChosen = false;
-            StopCoroutine(coroutine);
-            StartCoroutine(coroutine);
+            isCorrect = false;
+            SpawnWaves();
         }
     }
 
     void UpdateScore()
     {
         scoreText.text = "Score: " + score;
+        gameoverText.text = score.ToString();
     }
 
     void AddScore()
     {
-        score += 1;
+        score += 1 ; // Set different score value for different doors
         UpdateScore();
     }
 

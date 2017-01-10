@@ -11,7 +11,7 @@ public class Hunger : MonoBehaviour {
     public Button restart_button;
     public Button home_button;
     public Button hunger_text;
-    public Text game_over_text;
+    public GameObject gameover;
     public bool isHit = false;
 
     float nextTime = 0;
@@ -32,23 +32,26 @@ public class Hunger : MonoBehaviour {
             {
                 nextTime = Time.time + deltaTime;
                 hunger -= 1;
-                hungerbar.rectTransform.sizeDelta -= new Vector2(0.4f, 0);
+                hungerbar.rectTransform.sizeDelta -= new Vector2(1.0f, 0) * 0.76f;
             }
         }
 
-        if(hunger <= 0)
+        hunger_text.onClick.RemoveAllListeners();
+        hunger_text.onClick.AddListener(HungerOnClick);
+
+        OnGameOver();
+    }
+
+    void OnGameOver()
+    {
+        if (hunger <= 0)
         {
-            StopCoroutine(doorSpawn.coroutine);
-            restart_button.gameObject.SetActive(true);
-            home_button.gameObject.SetActive(true);
-            game_over_text.gameObject.SetActive(true);
+            gameover.gameObject.SetActive(true);
             restart_button.onClick.RemoveAllListeners();
             restart_button.onClick.AddListener(RestartOnClick);
             home_button.onClick.RemoveAllListeners();
             home_button.onClick.AddListener(HomeOnClick);
         }
-        hunger_text.onClick.RemoveAllListeners();
-        hunger_text.onClick.AddListener(HungerOnClick);
     }
 
     void RestartOnClick()
