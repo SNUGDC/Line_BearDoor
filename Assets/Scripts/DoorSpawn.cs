@@ -9,7 +9,7 @@ public class DoorSpawn : MonoBehaviour {
     public GameObject upDoor;
     public GameObject newDoor;
 
-    public int score;
+    public float score;
     public bool isCorrect;
     public Text scoreText;
     public Text gameoverText;
@@ -90,11 +90,24 @@ public class DoorSpawn : MonoBehaviour {
     {
         scoreText.text = "Score: " + score;
         gameoverText.text = score.ToString();
+        Debug.Log(score);
     }
 
     void AddScore()
     {
-        score += 1 ; // Set different score value for different doors
+        if(newDoor.name == "LeftSwipeDoor(Clone)")
+        {
+            score += (doorMover.DoorSpeed() * 100000 / 6) * 1;
+        }
+        else if(newDoor.name == "RightSwipeDoor(Clone)")
+        {
+            score += (doorMover.DoorSpeed() * 100000 / 6) * 2;
+        }
+        else if(newDoor.name == "UpSwipeDoor(Clone)")
+        {
+            score += (doorMover.DoorSpeed() * 100000 / 6) * 3;
+        }
+        // score += 1 ; 
         UpdateScore();
     }
 

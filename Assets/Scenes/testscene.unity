@@ -731,10 +731,10 @@ RectTransform:
   m_Father: {fileID: 1473806191}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -76, y: 1290}
-  m_SizeDelta: {x: 370, y: 56}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 520, y: 1290}
+  m_SizeDelta: {x: 500, y: 56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1258995286
 MonoBehaviour:
@@ -762,7 +762,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 50
-    m_Alignment: 0
+    m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1035,7 +1035,8 @@ MonoBehaviour:
   gameoverText: {fileID: 1944118378}
   swipe: {fileID: 1609744838}
   hg: {fileID: 1609744839}
-  doorMover: {fileID: 0}
+  doorMover: {fileID: 114803745042423854, guid: d365948692d4f8e48b28f380bd4d8599,
+    type: 2}
 --- !u!4 &1609744842
 Transform:
   m_ObjectHideFlags: 0

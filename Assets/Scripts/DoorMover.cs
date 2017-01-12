@@ -6,7 +6,7 @@ public class DoorMover : MonoBehaviour {
     private float nextTime = 0.0f;
     private float deltaTime = 0.01f;
 
-    public static float doorSpeed = 0.0f;
+    public static float doorSpeed = 0.003f;
 
     public Transform tf;
     public static DoorSpawn doorSpawn;
@@ -22,8 +22,8 @@ public class DoorMover : MonoBehaviour {
 
         if (tf.localScale.x<=0.3f && tf.localScale.y<=0.3f && tf.localScale.z <= 1.0f) {
             if(Time.time > nextTime) {
-                nextTime = Time.time + deltaTime * 0.003f / (0.003f + doorSpeed); //normal interval / interval of increased speed(=normal speed + increase speed)
-                tf.localScale += new Vector3(1.0f, 1.0f, 0.0f) * (0.003f + doorSpeed); //normal speed + increase speed
+                nextTime = Time.time + deltaTime * 0.003f / (doorSpeed); //normal interval / interval of increased speed(=normal speed + increase speed)
+                tf.localScale += new Vector3(1.0f, 1.0f, 0.0f) * (doorSpeed); //normal speed + increase speed
             }
         }
         if(//tf.localScale == new Vector3(0.3f, 0.3f, 1.0f)
@@ -41,9 +41,14 @@ public class DoorMover : MonoBehaviour {
             doorSpeed += 0.0006f;
         }
         if(doorSpawn.isCorrect == false) {
-            doorSpeed = 0.0f;
+            doorSpeed = 0.003f;
         }
         mouseTest.swipeDirection = SwipeDirectionbyMouse.NONE;
         doorSpawn.isCorrect = false;
+    }
+
+    public float DoorSpeed()
+    {
+        return doorSpeed;
     }
 }
