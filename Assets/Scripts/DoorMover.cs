@@ -8,26 +8,24 @@ public class DoorMover : MonoBehaviour {
 
     public static float doorSpeed = 0.003f;
 
-    public Transform tf;
     public static DoorSpawn doorSpawn;
     public static TestByMouse mouseTest;
     public static Hunger hunger;
 
     void Start() {
-        tf = GetComponent<Transform>();
-        tf.localScale = new Vector3(0.1f, 0.1f, 1.0f);
+        transform.localScale = new Vector3(0.1f, 0.1f, 1.0f);
     }
 
     void Update() {
 
-        if (tf.localScale.x<=0.3f && tf.localScale.y<=0.3f && tf.localScale.z <= 1.0f) {
+        if (transform.localScale.x<=0.3f && transform.localScale.y<=0.3f && transform.localScale.z <= 1.0f) {
             if(Time.time > nextTime) {
                 nextTime = Time.time + deltaTime * 0.003f / (doorSpeed); //normal interval / interval of increased speed(=normal speed + increase speed)
-                tf.localScale += new Vector3(1.0f, 1.0f, 0.0f) * (doorSpeed); //normal speed + increase speed
+                transform.localScale += new Vector3(1.0f, 1.0f, 0.0f) * (doorSpeed); //normal speed + increase speed
             }
         }
         if(//tf.localScale == new Vector3(0.3f, 0.3f, 1.0f)
-            tf.localScale.x >= 0.3f && tf.localScale.y >= 0.3f && tf.localScale.z >= 1.0f) {
+            transform.localScale.x >= 0.3f && transform.localScale.y >= 0.3f && transform.localScale.z >= 1.0f) {
             Debug.Log("isHit");
             hunger.hunger -= 100;
             hunger.hungerbar.rectTransform.sizeDelta -= new Vector2(76, 0);
