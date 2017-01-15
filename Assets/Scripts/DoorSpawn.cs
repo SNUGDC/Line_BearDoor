@@ -69,9 +69,9 @@ public class DoorSpawn : MonoBehaviour {
             Debug.Log("Correct!");
             Destroy(GameObject.Find(door + "SwipeArrow"));
             AddScore();
+            isCorrect = true;
             swipe.directionChosen = false;
             swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
-            DestroyDoor(door);
         }
     }
 
@@ -80,19 +80,11 @@ public class DoorSpawn : MonoBehaviour {
         if ((swipe.swipeDirection != dir) && (newDoor.name == door + "SwipeDoor(Clone)") && (swipe.swipeDirection != SwipeDirectionbyMouse.NONE))
         {
             Debug.Log("Fail");
+            isCorrect = false;
             swipe.directionChosen = false;
             swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
         }
     }
-
-    void DestroyDoor(string door)
-    {
-        if (isCorrect)
-        {
-            isCorrect = false;
-        }
-    }
-
 	void AddScore()
 	{
 		if (newDoor.name == "LeftSwipeDoor(Clone)")
