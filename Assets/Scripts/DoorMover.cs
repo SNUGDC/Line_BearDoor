@@ -22,12 +22,14 @@ public class DoorMover : MonoBehaviour {
                 transform.localScale += new Vector3(1.0f, 1.0f, 0.0f) * (doorSpeed); //normal speed + increase speed
             }
         }
-        if(//tf.localScale == new Vector3(0.3f, 0.3f, 1.0f)
-            transform.localScale.x >= 0.3f && transform.localScale.y >= 0.3f && transform.localScale.z >= 1.0f) {
-            Debug.Log("isHit");
-            hunger.hunger -= 100;
-            hunger.hungerbar.rectTransform.sizeDelta -= new Vector2(76, 0);
-            Destroy(this.gameObject);
+        if(transform.localScale.x >= 0.3f && transform.localScale.y >= 0.3f && transform.localScale.z >= 1.0f) {
+            if(GameObject.Find("LeftSwipeArrow") != null || GameObject.Find("RightSwipeArrow") != null || GameObject.Find("UpSwipeArrow") != null)
+            {
+                Debug.Log("isHit");
+                hunger.hunger -= 100;
+                hunger.hungerbar.rectTransform.sizeDelta -= new Vector2(76, 0);
+            }
+            Destroy(gameObject);
             DoorSpawn.Instance.SpawnWaves();
         }
     }

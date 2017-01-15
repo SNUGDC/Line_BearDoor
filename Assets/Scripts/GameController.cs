@@ -23,7 +23,8 @@ public class GameController : MonoBehaviour {
 		currentscene = SceneManager.GetActiveScene();
         if (currentscene.name == "testscene")
         {
-			StopWorld();
+            doorspawn.Initialize();
+            StopWorld();
             StartCoroutine(Countdown());
         }
     }

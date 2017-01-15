@@ -21,7 +21,7 @@ public class DoorSpawn : MonoBehaviour {
 
     public static DoorSpawn Instance = null;
 
-    void Start() {
+    public void Initialize() {
         Instance = this;
         scoreText.text = "Score: 0";
         gameoverText.text = "0";
