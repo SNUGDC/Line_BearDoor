@@ -15,17 +15,17 @@ public class GameController : MonoBehaviour {
 
     Scene currentscene;
 
-    // Use this for initialization
-    void Start()
+	void Start()
     {
-        //currentscene = SceneManager.GetActiveScene();
         mouseTest = GetComponent<TestByMouse>();
         doorspawn = GetComponent<DoorSpawn>();
-        /*if (currentscene.name == "testscene")
+
+		currentscene = SceneManager.GetActiveScene();
+        if (currentscene.name == "testscene")
         {
-            Time.timeScale = 0;
+			StopWorld();
             StartCoroutine(Countdown());
-        }*/
+        }
     }
 	
 	// Update is called once per frame
@@ -34,18 +34,12 @@ public class GameController : MonoBehaviour {
     }
 
     public void OpenPopup()
-    {
-        //  Time.timeScale = 0;
-        mouseTest.enabled = false;
-        doorspawn.enabled = false;
-        if (doorspawn.newDoor != null)
-        {
-            doorspawn.newDoor.GetComponent<DoorMover>().enabled = false;
-        }
-        Debug.Log("Open popup called");
-    }
+	{
+		StopWorld();
+		Debug.Log("Open popup called");
+	}
 
-    public void ClosePopup()
+	public void ClosePopup()
     {
         StartCoroutine(Countdown());
         Debug.Log("Close popup called");
@@ -65,18 +59,32 @@ public class GameController : MonoBehaviour {
             yield return new WaitForRealSeconds(wait);
         }
         if (i == 0)
-        {
-            countdown.gameObject.SetActive(false);
-      //      Time.timeScale = 1;
-            mouseTest.enabled = true;
-            doorspawn.enabled = true;
-            if (doorspawn.newDoor != null)
-            {
-                doorspawn.newDoor.GetComponent<DoorMover>().enabled = true;
-            }
-        }
+		{
+			countdown.gameObject.SetActive(false);
+			//      Time.timeScale = 1;
+			ResumeWorld();
+		}
+	}
 
-    }
+	void StopWorld()
+	{
+		mouseTest.enabled = false;
+		doorspawn.enabled = false;
+		if (doorspawn.newDoor != null)
+		{
+			doorspawn.newDoor.GetComponent<DoorMover>().enabled = false;
+		}
+	}
+
+	void ResumeWorld()
+	{
+		mouseTest.enabled = true;
+		doorspawn.enabled = true;
+		if (doorspawn.newDoor != null)
+		{
+			doorspawn.newDoor.GetComponent<DoorMover>().enabled = true;
+		}
+	}
 }
 
 public class WaitForRealSeconds : CustomYieldInstruction
