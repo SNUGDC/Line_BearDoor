@@ -1,0 +1,98 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+
+public class GameController : MonoBehaviour {
+    
+    public Image pause_popup;
+    public Text countdown;
+    public Button leavebutton;
+    TestByMouse mouseTest;
+    DoorSpawn doorspawn;
+
+    Scene currentscene;
+
+    // Use this for initialization
+    void Start()
+    {
+        //currentscene = SceneManager.GetActiveScene();
+        mouseTest = GetComponent<TestByMouse>();
+        doorspawn = GetComponent<DoorSpawn>();
+        /*if (currentscene.name == "testscene")
+        {
+            Time.timeScale = 0;
+            StartCoroutine(Countdown());
+        }*/
+    }
+	
+	// Update is called once per frame
+	void Update ()
+    {
+    }
+
+    public void OpenPopup()
+    {
+        //  Time.timeScale = 0;
+        mouseTest.enabled = false;
+        doorspawn.enabled = false;
+        if (doorspawn.newDoor != null)
+        {
+            doorspawn.newDoor.GetComponent<DoorMover>().enabled = false;
+        }
+        Debug.Log("Open popup called");
+    }
+
+    public void ClosePopup()
+    {
+        StartCoroutine(Countdown());
+        Debug.Log("Close popup called");
+    }
+
+    public IEnumerator Countdown()
+    {
+        int i = 3;
+        float wait = 1.0f;
+
+        mouseTest.swipeDirection = SwipeDirectionbyMouse.NONE;
+        countdown.gameObject.SetActive(true);
+        while (i>0)
+        {
+            countdown.text = i.ToString();
+            i--;
+            yield return new WaitForRealSeconds(wait);
+        }
+        if (i == 0)
+        {
+            countdown.gameObject.SetActive(false);
+      //      Time.timeScale = 1;
+            mouseTest.enabled = true;
+            doorspawn.enabled = true;
+            if (doorspawn.newDoor != null)
+            {
+                doorspawn.newDoor.GetComponent<DoorMover>().enabled = true;
+            }
+        }
+
+    }
+}
+
+public class WaitForRealSeconds : CustomYieldInstruction
+{
+    private float m_FinishTime;
+
+    public WaitForRealSeconds(float seconds)
+    {
+        m_FinishTime = seconds + Time.realtimeSinceStartup;
+    }
+
+    public override bool keepWaiting
+    {
+        get
+        {
+            return m_FinishTime > Time.realtimeSinceStartup;
+        }
+    }
+} // Additional WaitForSeconds Class by realtime

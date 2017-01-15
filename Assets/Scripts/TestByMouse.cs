@@ -57,9 +57,9 @@ public class TestByMouse : MonoBehaviour {
         } // Set SwipeDirection
     }
 
-    public bool IsSwiping(SwipeDirectionbyMouse dir) {
+    /*public bool IsSwiping(SwipeDirectionbyMouse dir) {
         return dir == swipeDirection;
-    }
+    }*/
 }
     
 
