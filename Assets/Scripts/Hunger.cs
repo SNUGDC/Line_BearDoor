@@ -22,6 +22,9 @@ public class Hunger : MonoBehaviour {
     void Start()
     {
         DoorMover.hunger = GameObject.Find("GameController").GetComponent<Hunger>();
+		hunger_text.onClick.AddListener(HungerOnClick);
+		restart_button.onClick.AddListener(RestartOnClick);
+		home_button.onClick.AddListener(HomeOnClick);
     }
 
     void Update()
@@ -36,9 +39,6 @@ public class Hunger : MonoBehaviour {
             }
         }
 
-        hunger_text.onClick.RemoveAllListeners();
-        hunger_text.onClick.AddListener(HungerOnClick);
-
         OnGameOver();
     }
 
@@ -46,11 +46,7 @@ public class Hunger : MonoBehaviour {
     {
         if (hunger <= 0)
         {
-            gameover.gameObject.SetActive(true);
-            restart_button.onClick.RemoveAllListeners();
-            restart_button.onClick.AddListener(RestartOnClick);
-            home_button.onClick.RemoveAllListeners();
-            home_button.onClick.AddListener(HomeOnClick);
+            gameover.gameObject.SetActive(true);   
         }
     }
 
