@@ -8,8 +8,6 @@ public class DoorMover : MonoBehaviour {
 
     public static float doorSpeed = 0.003f;
 
-    public static DoorSpawn doorSpawn;
-    public static TestByMouse mouseTest;
     public static Hunger hunger;
 
     void Start() {
@@ -30,19 +28,19 @@ public class DoorMover : MonoBehaviour {
             hunger.hunger -= 100;
             hunger.hungerbar.rectTransform.sizeDelta -= new Vector2(76, 0);
             Destroy(this.gameObject);
-            doorSpawn.SpawnWaves();
+            DoorSpawn.Instance.SpawnWaves();
         }
     }
 
     void OnDestroy() {
-        if (doorSpawn.isCorrect == true) {
+        if (DoorSpawn.Instance.isCorrect == true) {
             doorSpeed += 0.0006f;
         }
-        if(doorSpawn.isCorrect == false) {
+        if(DoorSpawn.Instance.isCorrect == false) {
             doorSpeed = 0.003f;
         }
-        mouseTest.swipeDirection = SwipeDirectionbyMouse.NONE;
-        doorSpawn.isCorrect = false;
+        TestByMouse.Instance.swipeDirection = SwipeDirectionbyMouse.NONE;
+        DoorSpawn.Instance.isCorrect = false;
     }
 
     public float DoorSpeed()

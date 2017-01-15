@@ -14,8 +14,10 @@ public class TestByMouse : MonoBehaviour {
     public Vector2 direction;
     public bool isSwiping;
 
+    public static TestByMouse Instance = null;
+
     void Start() {
-        DoorMover.mouseTest = GameObject.Find("GameController").GetComponent<TestByMouse>();
+        Instance = this;
     }
 
     void Update() {

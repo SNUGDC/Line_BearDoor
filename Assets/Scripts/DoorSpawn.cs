@@ -19,8 +19,10 @@ public class DoorSpawn : MonoBehaviour {
     public DoorMover doorMover;
     public IEnumerator coroutine;
 
+    public static DoorSpawn Instance = null;
+
     void Start() {
-        DoorMover.doorSpawn = gameObject.GetComponent<DoorSpawn>();
+        Instance = this;
         scoreText.text = "Score: 0";
         gameoverText.text = "0";
         SpawnWaves();
