@@ -29,7 +29,6 @@ public class DoorSpawn : MonoBehaviour {
     }
 
     void Update() {
-        newDoor = GameObject.FindWithTag("Door");
         SwipeDoor();
     }
 
@@ -42,7 +41,7 @@ public class DoorSpawn : MonoBehaviour {
         
         if (hg.hunger > 0)
         {
-            Instantiate(Door[Random.Range(0, 3)], new Vector3(0, 0, 0), Quaternion.identity);
+			newDoor = Instantiate(Door[Random.Range(0, 3)], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         }
         
     }
@@ -88,30 +87,29 @@ public class DoorSpawn : MonoBehaviour {
         }
     }
 
+	void AddScore()
+	{
+		if (newDoor.name == "LeftSwipeDoor(Clone)")
+		{
+			score += (doorMover.DoorSpeed() * 100000 / 6) * 1;
+		}
+		else if (newDoor.name == "RightSwipeDoor(Clone)")
+		{
+			score += (doorMover.DoorSpeed() * 100000 / 6) * 2;
+		}
+		else if (newDoor.name == "UpSwipeDoor(Clone)")
+		{
+			score += (doorMover.DoorSpeed() * 100000 / 6) * 3;
+		}
+		// score += 1 ; 
+		UpdateScore();
+	}
+
     void UpdateScore()
     {
         scoreText.text = "Score: " + score;
         gameoverText.text = score.ToString();
         Debug.Log(score);
     }
-
-    void AddScore()
-    {
-        if(newDoor.name == "LeftSwipeDoor(Clone)")
-        {
-            score += (doorMover.DoorSpeed() * 100000 / 6) * 1;
-        }
-        else if(newDoor.name == "RightSwipeDoor(Clone)")
-        {
-            score += (doorMover.DoorSpeed() * 100000 / 6) * 2;
-        }
-        else if(newDoor.name == "UpSwipeDoor(Clone)")
-        {
-            score += (doorMover.DoorSpeed() * 100000 / 6) * 3;
-        }
-        // score += 1 ; 
-        UpdateScore();
-    }
-
 }
 
