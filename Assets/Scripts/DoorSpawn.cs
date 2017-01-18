@@ -89,15 +89,15 @@ public class DoorSpawn : MonoBehaviour {
 	{
 		if (newDoor.name == "LeftSwipeDoor(Clone)")
 		{
-			score += (doorMover.DoorSpeed() * 100000 / 6) * 1;
+			score += (doorMover.DoorSpeed() * 100000 / 3) * 1;
 		}
 		else if (newDoor.name == "RightSwipeDoor(Clone)")
 		{
-			score += (doorMover.DoorSpeed() * 100000 / 6) * 2;
+			score += (doorMover.DoorSpeed() * 100000 / 3) * 2;
 		}
 		else if (newDoor.name == "UpSwipeDoor(Clone)")
 		{
-			score += (doorMover.DoorSpeed() * 100000 / 6) * 3;
+			score += (doorMover.DoorSpeed() * 100000 / 3) * 3;
 		}
 		// score += 1 ; 
 		UpdateScore();
