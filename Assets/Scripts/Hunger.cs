@@ -31,11 +31,14 @@ public class Hunger : MonoBehaviour {
     {
         if(doorSpawn.newDoor != null)
         {
-            if (Time.time > nextTime)
+            if (GetComponent<GameController>().isStoped == false)
             {
-                nextTime = Time.time + deltaTime;
-                hunger -= 1;
-                hungerbar.rectTransform.sizeDelta -= new Vector2(1.0f, 0) * 0.76f;
+                if (Time.time > nextTime)
+                {
+                    nextTime = Time.time + deltaTime;
+                    hunger -= 1;
+                    hungerbar.rectTransform.sizeDelta -= new Vector2(1.0f, 0) * 0.76f;
+                }
             }
         }
 

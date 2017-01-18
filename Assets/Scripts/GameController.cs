@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
     public Image pause_popup;
     public Text countdown;
     public Button leavebutton;
+    public bool isStoped = false;
     TestByMouse mouseTest;
     DoorSpawn doorspawn;
 
@@ -75,6 +76,7 @@ public class GameController : MonoBehaviour {
 		{
 			doorspawn.newDoor.GetComponent<DoorMover>().enabled = false;
 		}
+        isStoped = true;
 	}
 
 	void ResumeWorld()
@@ -85,6 +87,7 @@ public class GameController : MonoBehaviour {
 		{
 			doorspawn.newDoor.GetComponent<DoorMover>().enabled = true;
 		}
+        isStoped = false;
 	}
 }
 

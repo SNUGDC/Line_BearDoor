@@ -240,7 +240,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1859672242}
+      - m_Target: {fileID: 738342090}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -966,7 +966,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1859672242}
+      - m_Target: {fileID: 738342090}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -1525,6 +1525,7 @@ MonoBehaviour:
   pause_popup: {fileID: 1859672244}
   countdown: {fileID: 480288409}
   leavebutton: {fileID: 0}
+  isStoped: 0
 --- !u!1 &1700269991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1863,7 +1864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1860316685
 RectTransform:
   m_ObjectHideFlags: 0
