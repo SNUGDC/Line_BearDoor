@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour {
     public Text countdown;
     public Button leavebutton;
     public bool isStoped = false;
+    public GameObject Bear;
     TestByMouse mouseTest;
     DoorSpawn doorspawn;
 
@@ -54,6 +55,7 @@ public class GameController : MonoBehaviour {
 
         mouseTest.swipeDirection = SwipeDirectionbyMouse.NONE;
         countdown.gameObject.SetActive(true);
+        Bear.GetComponent<Animator>().enabled = false;
         while (i>0)
         {
             countdown.text = i.ToString();
@@ -63,8 +65,9 @@ public class GameController : MonoBehaviour {
         if (i == 0)
 		{
 			countdown.gameObject.SetActive(false);
-			//      Time.timeScale = 1;
-			ResumeWorld();
+            Bear.GetComponent<Animator>().enabled = true;
+            //      Time.timeScale = 1;
+            ResumeWorld();
 		}
 	}
 

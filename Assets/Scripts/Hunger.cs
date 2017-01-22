@@ -49,7 +49,8 @@ public class Hunger : MonoBehaviour {
     {
         if (hunger <= 0)
         {
-            gameover.gameObject.SetActive(true);   
+            gameover.gameObject.SetActive(true);
+            GetComponent<GameController>().Bear.GetComponent<Animator>().enabled = false;
         }
     }
 
