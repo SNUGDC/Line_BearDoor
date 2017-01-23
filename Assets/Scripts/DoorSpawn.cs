@@ -37,7 +37,7 @@ public class DoorSpawn : MonoBehaviour {
 
         if (hg.hunger > 0)
         {
-            newDoor = Instantiate(Door[Random.Range(0, 3)], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            newDoor = Instantiate(Door[Random.Range(0, 3)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
         }
     }
 
@@ -68,6 +68,7 @@ public class DoorSpawn : MonoBehaviour {
         {
             Debug.Log("Correct!");
             Destroy(GameObject.Find(door + "SwipeArrow"));
+            newDoor.GetComponent<SpriteRenderer>().enabled = false;
             AddScore();
             isCorrect = true;
             swipe.directionChosen = false;
