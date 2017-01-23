@@ -23,7 +23,7 @@ public class DoorSpawn : MonoBehaviour {
 
     public void Initialize() {
         Instance = this;
-        scoreText.text = "Score: 0";
+        scoreText.text = "0";
         gameoverText.text = "0";
         SpawnWaves();
     }
@@ -106,7 +106,7 @@ public class DoorSpawn : MonoBehaviour {
 
     void UpdateScore()
     {
-        scoreText.text = "Score: " + score;
+        scoreText.text = " " + score;
         gameoverText.text = score.ToString();
         Debug.Log(score);
     }
