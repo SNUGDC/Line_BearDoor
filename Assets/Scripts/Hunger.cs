@@ -56,7 +56,7 @@ public class Hunger : MonoBehaviour {
 
     void RestartOnClick()
     {
-        SceneManager.LoadScene("testScene");
+        SceneManager.LoadScene("Game");
     }
 
     void HomeOnClick()

@@ -1825,6 +1825,7 @@ GameObject:
   - component: {fileID: 1609744839}
   - component: {fileID: 1609744843}
   - component: {fileID: 1609744844}
+  - component: {fileID: 1609744845}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1940,7 +1941,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1609744837}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d816f9a2aeac15644961a15c397670e0, type: 3}
   m_Name: 
@@ -1948,6 +1949,19 @@ MonoBehaviour:
   Road1: {fileID: 1104693691968992, guid: b63abbe3ade4c424dab1848934884523, type: 2}
   Road2: {fileID: 1306617499979842, guid: 165c69c34bdd7e44494de6200fbbf4ac, type: 2}
   MoveSpeed: 1
+--- !u!114 &1609744845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609744837}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3ea1eafd7002d479cf40d22eb6af4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftTree: {fileID: 1469551178111974, guid: 56092b31dd5797f45b88252099199a6f, type: 2}
+  RightTree: {fileID: 1804600818473384, guid: 0a9969ab00412b84c998cf51d1701ae7, type: 2}
 --- !u!1 &1700269991
 GameObject:
   m_ObjectHideFlags: 0
