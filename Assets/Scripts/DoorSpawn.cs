@@ -68,7 +68,6 @@ public class DoorSpawn : MonoBehaviour {
         {
             Debug.Log("Correct!");
             Destroy(GameObject.Find(door + "SwipeArrow"));
-            newDoor.GetComponent<SpriteRenderer>().enabled = false;
             AddScore();
             isCorrect = true;
             swipe.directionChosen = false;
