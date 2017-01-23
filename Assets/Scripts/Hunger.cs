@@ -51,6 +51,8 @@ public class Hunger : MonoBehaviour {
         {
             gameover.gameObject.SetActive(true);
             GetComponent<GameController>().Bear.GetComponent<Animator>().enabled = false;
+            GetComponent<RoadSpawn>().enabled = false;
+            GetComponent<TreeSpawn>().enabled = false;
         }
     }
 
