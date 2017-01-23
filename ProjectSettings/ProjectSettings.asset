@@ -6,11 +6,11 @@ PlayerSettings:
   serializedVersion: 10
   productGUID: 492900eeb3ad4b1458829df57cbbe60d
   AndroidProfiler: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 1
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: SNUGDC
   productName: Line_BearDoor
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
