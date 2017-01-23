@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour {
         doorspawn = GetComponent<DoorSpawn>();
 
 		currentscene = SceneManager.GetActiveScene();
-        if (currentscene.name == "testscene")
+        if (currentscene.name == "Game")
         {
             doorspawn.Initialize();
             StopWorld();
