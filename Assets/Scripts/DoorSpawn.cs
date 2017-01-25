@@ -23,6 +23,7 @@ public class DoorSpawn : MonoBehaviour {
 
     public void Initialize() {
         Instance = this;
+
         scoreText.text = "0";
         gameoverText.text = "0";
         SpawnWaves();

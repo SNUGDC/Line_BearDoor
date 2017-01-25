@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour {
     public GameObject Bear;
     TestByMouse mouseTest;
     DoorSpawn doorspawn;
+    TreeSpawn treespawn;
 
     Scene currentscene;
 
@@ -77,6 +78,8 @@ public class GameController : MonoBehaviour {
 	{
 		mouseTest.enabled = false;
 		doorspawn.enabled = false;
+        //TreeController.Instance.enabled = false;
+        //treespawn.enabled = false;
 		if (doorspawn.newDoor != null)
 		{
 			doorspawn.newDoor.GetComponent<DoorMover>().enabled = false;
@@ -88,6 +91,8 @@ public class GameController : MonoBehaviour {
 	{
 		mouseTest.enabled = true;
 		doorspawn.enabled = true;
+        //TreeController.Instance.enabled = true;
+        //treespawn.enabled = true;
         if (doorspawn.newDoor != null)
 		{
 			doorspawn.newDoor.GetComponent<DoorMover>().enabled = true;

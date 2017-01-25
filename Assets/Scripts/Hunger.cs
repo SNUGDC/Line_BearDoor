@@ -21,7 +21,6 @@ public class Hunger : MonoBehaviour {
     
     void Start()
     {
-		hunger_text.onClick.AddListener(HungerOnClick);
 		restart_button.onClick.AddListener(RestartOnClick);
 		home_button.onClick.AddListener(HomeOnClick);
     }
@@ -75,10 +74,5 @@ public class Hunger : MonoBehaviour {
     void HomeOnClick()
     {
 
-    }
-
-    void HungerOnClick()
-    {
-        hunger = 0;
     }
 }
