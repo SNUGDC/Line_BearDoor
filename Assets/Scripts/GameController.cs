@@ -88,7 +88,7 @@ public class GameController : MonoBehaviour {
 	{
 		mouseTest.enabled = true;
 		doorspawn.enabled = true;
-		if (doorspawn.newDoor != null)
+        if (doorspawn.newDoor != null)
 		{
 			doorspawn.newDoor.GetComponent<DoorMover>().enabled = true;
 		}
