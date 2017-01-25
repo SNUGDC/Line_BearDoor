@@ -64,7 +64,7 @@ public class DoorSpawn : MonoBehaviour {
 
     void CorrectlySwiped(SwipeDirectionbyMouse dir, string door)
     {
-        if ((swipe.swipeDirection == dir) && (newDoor.name == door + "SwipeDoor(Clone)"))
+        if ((swipe.swipeDirection == dir) && (newDoor.name == door + "SwipeDoor(Clone)") && (GameObject.Find(door + "SwipeArrow") != null))
         {
             Debug.Log("Correct!");
             Destroy(GameObject.Find(door + "SwipeArrow"));

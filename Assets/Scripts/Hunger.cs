@@ -21,7 +21,6 @@ public class Hunger : MonoBehaviour {
     
     void Start()
     {
-        DoorMover.hunger = GameObject.Find("GameController").GetComponent<Hunger>();
 		hunger_text.onClick.AddListener(HungerOnClick);
 		restart_button.onClick.AddListener(RestartOnClick);
 		home_button.onClick.AddListener(HomeOnClick);
