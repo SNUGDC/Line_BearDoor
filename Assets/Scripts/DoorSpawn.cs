@@ -14,15 +14,16 @@ public class DoorSpawn : MonoBehaviour {
     public Text scoreText;
     public Text gameoverText;
 
-    public TestByMouse swipe;
-    public Hunger hg;
-    public DoorMover doorMover;
-    public IEnumerator coroutine;
+    TestByMouse swipe;
+    Hunger hg;
 
     public static DoorSpawn Instance = null;
 
     public void Initialize() {
         Instance = this;
+
+        swipe = GetComponent<TestByMouse>();
+        hg = GetComponent<Hunger>();
 
         scoreText.text = "0";
         gameoverText.text = "0";
@@ -90,15 +91,15 @@ public class DoorSpawn : MonoBehaviour {
 	{
 		if (newDoor.name == "LeftSwipeDoor(Clone)")
 		{
-			score += (doorMover.DoorSpeed() * 100000 / 3) * 1;
+			score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 1;
 		}
 		else if (newDoor.name == "RightSwipeDoor(Clone)")
 		{
-			score += (doorMover.DoorSpeed() * 100000 / 3) * 2;
+			score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 2;
 		}
 		else if (newDoor.name == "UpSwipeDoor(Clone)")
 		{
-			score += (doorMover.DoorSpeed() * 100000 / 3) * 3;
+			score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 3;
 		}
 		// score += 1 ; 
 		UpdateScore();

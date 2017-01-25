@@ -12,7 +12,6 @@ public class Hunger : MonoBehaviour {
     public Button home_button;
     public Button hunger_text;
     public GameObject gameover;
-    public bool isHit = false;
 
     float nextTime = 0;
     float deltaTime = 1;

@@ -8,7 +8,11 @@ public class DoorMover : MonoBehaviour {
 
     public static float doorSpeed = 0.003f;
 
+    public static DoorMover Instance = null;
+
     void Start() {
+        Instance = this;
+
         transform.localScale = new Vector3(0.1f, 0.1f, 1.0f);
     }
 
