@@ -8,8 +8,6 @@ public class DoorMover : MonoBehaviour {
 
     public static float doorSpeed = 0.003f;
 
-    public static Hunger hunger;
-
     void Start() {
         transform.localScale = new Vector3(0.1f, 0.1f, 1.0f);
     }
@@ -21,16 +19,6 @@ public class DoorMover : MonoBehaviour {
                 nextTime = Time.time + deltaTime * 0.003f / (doorSpeed); //normal interval / interval of increased speed(=normal speed + increase speed)
                 transform.localScale += new Vector3(1.0f, 1.0f, 0.0f) * (doorSpeed); //normal speed + increase speed
             }
-        }
-        if(transform.localScale.x >= 0.3f && transform.localScale.y >= 0.3f && transform.localScale.z >= 1.0f) {
-            if(GameObject.Find("LeftSwipeArrow") != null || GameObject.Find("RightSwipeArrow") != null || GameObject.Find("UpSwipeArrow") != null)
-            {
-                Debug.Log("isHit");
-                hunger.hunger -= 100;
-                hunger.hungerbar.rectTransform.sizeDelta -= new Vector2(76, 0);
-            }
-            Destroy(gameObject);
-            DoorSpawn.Instance.SpawnWaves();
         }
     }
 

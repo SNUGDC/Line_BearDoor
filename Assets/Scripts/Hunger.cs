@@ -40,6 +40,18 @@ public class Hunger : MonoBehaviour {
                     hungerbar.rectTransform.sizeDelta -= new Vector2(1.0f, 0) * 0.76f;
                 }
             }
+
+            if (doorSpawn.newDoor.transform.localScale.x >= 0.3f && doorSpawn.newDoor.transform.localScale.y >= 0.3f && doorSpawn.newDoor.transform.localScale.z >= 1.0f)
+            {
+                if (GameObject.Find("LeftSwipeArrow") != null || GameObject.Find("RightSwipeArrow") != null || GameObject.Find("UpSwipeArrow") != null)
+                {
+                    Debug.Log("isHit");
+                    hunger -= 100;
+                    hungerbar.rectTransform.sizeDelta -= new Vector2(76, 0);
+                }
+                Destroy(doorSpawn.newDoor);
+                DoorSpawn.Instance.SpawnWaves();
+            }
         }
 
         OnGameOver();
