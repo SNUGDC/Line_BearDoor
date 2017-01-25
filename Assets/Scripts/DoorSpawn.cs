@@ -9,13 +9,11 @@ public class DoorSpawn : MonoBehaviour {
     public GameObject upDoor;
     public GameObject newDoor;
 
-    public float score;
     public bool isCorrect;
-    public Text scoreText;
-    public Text gameoverText;
 
     TestByMouse swipe;
     Hunger hg;
+    GameController gameController;
 
     public static DoorSpawn Instance = null;
 
@@ -24,9 +22,8 @@ public class DoorSpawn : MonoBehaviour {
 
         swipe = GetComponent<TestByMouse>();
         hg = GetComponent<Hunger>();
+        gameController = GetComponent<GameController>();
 
-        scoreText.text = "0";
-        gameoverText.text = "0";
         SpawnWaves();
     }
 
@@ -70,7 +67,7 @@ public class DoorSpawn : MonoBehaviour {
         {
             Debug.Log("Correct!");
             Destroy(GameObject.Find(door + "SwipeArrow"));
-            AddScore();
+            gameController.AddScore();
             isCorrect = true;
             swipe.directionChosen = false;
             swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
@@ -86,30 +83,6 @@ public class DoorSpawn : MonoBehaviour {
             swipe.directionChosen = false;
             swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
         }
-    }
-	void AddScore()
-	{
-		if (newDoor.name == "LeftSwipeDoor(Clone)")
-		{
-			score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 1;
-		}
-		else if (newDoor.name == "RightSwipeDoor(Clone)")
-		{
-			score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 2;
-		}
-		else if (newDoor.name == "UpSwipeDoor(Clone)")
-		{
-			score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 3;
-		}
-		// score += 1 ; 
-		UpdateScore();
-	}
-
-    void UpdateScore()
-    {
-        scoreText.text = " " + score;
-        gameoverText.text = score.ToString();
-        Debug.Log(score);
     }
 }
 

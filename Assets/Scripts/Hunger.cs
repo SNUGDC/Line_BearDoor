@@ -16,10 +16,12 @@ public class Hunger : MonoBehaviour {
     float nextTime = 0;
     float deltaTime = 1;
 
-    public DoorSpawn doorSpawn;
+    DoorSpawn doorSpawn;
     
     void Start()
     {
+        doorSpawn = GetComponent<DoorSpawn>();
+
 		restart_button.onClick.AddListener(RestartOnClick);
 		home_button.onClick.AddListener(HomeOnClick);
     }

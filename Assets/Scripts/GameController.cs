@@ -7,11 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
     
-    public Image pause_popup;
     public Text countdown;
+
+    public Image pause_popup;
     public Button leavebutton;
+
+    public Text scoreText;
+    public Text gameoverText;
+    public float score;
+
     public bool isStoped = false;
     public GameObject Bear;
+
     TestByMouse mouseTest;
     DoorSpawn doorspawn;
     TreeSpawn treespawn;
@@ -22,8 +29,11 @@ public class GameController : MonoBehaviour {
     {
         mouseTest = GetComponent<TestByMouse>();
         doorspawn = GetComponent<DoorSpawn>();
+        
+        scoreText.text = "0";
+        gameoverText.text = "0";
 
-		currentscene = SceneManager.GetActiveScene();
+        currentscene = SceneManager.GetActiveScene();
         if (currentscene.name == "Game")
         {
             doorspawn.Initialize();
@@ -99,6 +109,31 @@ public class GameController : MonoBehaviour {
 		}
         isStoped = false;
 	}
+    
+    public void AddScore()
+    {
+        if (DoorSpawn.Instance.newDoor.name == "LeftSwipeDoor(Clone)")
+        {
+            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 1;
+        }
+        else if (DoorSpawn.Instance.newDoor.name == "RightSwipeDoor(Clone)")
+        {
+            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 2;
+        }
+        else if (DoorSpawn.Instance.newDoor.name == "UpSwipeDoor(Clone)")
+        {
+            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 3;
+        }
+        // score += 1 ; 
+        UpdateScore();
+    }
+
+    public void UpdateScore()
+    {
+        scoreText.text = " " + score;
+        gameoverText.text = score.ToString();
+        Debug.Log(score);
+    }
 }
 
 public class WaitForRealSeconds : CustomYieldInstruction
