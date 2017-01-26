@@ -77,9 +77,6 @@ public class GameController : MonoBehaviour {
 		{
 			countdown.gameObject.SetActive(false);
             Bear.GetComponent<Animator>().enabled = true;
-            //GetComponent<RoadSpawn>().enabled = true;
-            //GetComponent<TreeSpawn>().enabled = true;
-            //      Time.timeScale = 1;
             ResumeWorld();
 		}
 	}
