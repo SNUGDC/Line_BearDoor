@@ -8,20 +8,18 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
     
     public Text countdown;
-
     public Image pause_popup;
     public Button leavebutton;
-
     public Text scoreText;
     public Text gameoverText;
     public float score;
-
-    public bool isStoped = false;
+    public bool isStoped = false; //for Debugging
     public GameObject Bear;
 
     TestByMouse mouseTest;
     DoorSpawn doorspawn;
     TreeSpawn treespawn;
+    RoadSpawn roadspawn;
 
     Scene currentscene;
 
@@ -29,6 +27,8 @@ public class GameController : MonoBehaviour {
     {
         mouseTest = GetComponent<TestByMouse>();
         doorspawn = GetComponent<DoorSpawn>();
+        treespawn = GetComponent<TreeSpawn>();
+        roadspawn = GetComponent<RoadSpawn>();
         
         scoreText.text = "0";
         gameoverText.text = "0";
@@ -77,8 +77,8 @@ public class GameController : MonoBehaviour {
 		{
 			countdown.gameObject.SetActive(false);
             Bear.GetComponent<Animator>().enabled = true;
-            GetComponent<RoadSpawn>().enabled = true;
-            GetComponent<TreeSpawn>().enabled = true;
+            //GetComponent<RoadSpawn>().enabled = true;
+            //GetComponent<TreeSpawn>().enabled = true;
             //      Time.timeScale = 1;
             ResumeWorld();
 		}
@@ -88,12 +88,20 @@ public class GameController : MonoBehaviour {
 	{
 		mouseTest.enabled = false;
 		doorspawn.enabled = false;
-        //TreeController.Instance.enabled = false;
-        //treespawn.enabled = false;
+        treespawn.enabled = false;
+        roadspawn.enabled = false;
 		if (doorspawn.newDoor != null)
 		{
 			doorspawn.newDoor.GetComponent<DoorMover>().enabled = false;
-		}
+        }
+        if(GameObject.FindGameObjectsWithTag("Tree") != null)
+        {
+            GameObject[] trees = GameObject.FindGameObjectsWithTag("Tree");
+            for(int i=0; i < trees.Length; i++)
+            {
+                trees[i].GetComponent<TreeController>().enabled = false;
+            }
+        }
         isStoped = true;
 	}
 
@@ -101,12 +109,20 @@ public class GameController : MonoBehaviour {
 	{
 		mouseTest.enabled = true;
 		doorspawn.enabled = true;
-        //TreeController.Instance.enabled = true;
-        //treespawn.enabled = true;
+        treespawn.enabled = true;
+        roadspawn.enabled = true;
         if (doorspawn.newDoor != null)
 		{
 			doorspawn.newDoor.GetComponent<DoorMover>().enabled = true;
-		}
+        }
+        if (GameObject.FindGameObjectsWithTag("Tree") != null)
+        {
+            GameObject[] trees = GameObject.FindGameObjectsWithTag("Tree");
+            for (int i = 0; i < trees.Length; i++)
+            {
+                trees[i].GetComponent<TreeController>().enabled = true;
+            }
+        }
         isStoped = false;
 	}
     

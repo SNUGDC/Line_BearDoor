@@ -9,8 +9,6 @@ public class TreeController : MonoBehaviour
     private float MoveSpeed;
     private float MoveDistance;
 
-    public static TreeController Instance = null;
-
     public enum Position
     {
         Right,
@@ -19,8 +17,6 @@ public class TreeController : MonoBehaviour
 
     private void Start()
     {
-        Instance = this;
-
         MoveSpeed = 2.8f;
     }
 

@@ -7,7 +7,6 @@ public class DoorMover : MonoBehaviour {
     private float deltaTime = 0.01f;
 
     public static float doorSpeed = 0.003f;
-
     public static DoorMover Instance = null;
 
     void Start() {
