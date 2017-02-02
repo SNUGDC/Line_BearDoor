@@ -59,6 +59,7 @@ public class DoorSpawn : MonoBehaviour {
             IncorrectlySwiped(SwipeDirectionbyMouse.LEFT, "Left");
             IncorrectlySwiped(SwipeDirectionbyMouse.RIGHT, "Right");
             IncorrectlySwiped(SwipeDirectionbyMouse.UP, "Up");
+            IncorrectlySwiped(SwipeDirectionbyMouse.NONE, "Blank");
             //Destroy if Incorrectly Swiped
         }
     }
@@ -78,7 +79,7 @@ public class DoorSpawn : MonoBehaviour {
 
     void IncorrectlySwiped(SwipeDirectionbyMouse dir, string door)
     {
-        if(swipe.swipeDirection != dir && newDoor.name == "BlankSwipeDoor(Clone)")
+        if(swipe.swipeDirection != SwipeDirectionbyMouse.NONE && newDoor.name == "BlankSwipeDoor_Dummy(Clone)" && GameObject.Find("BlankDoorFlag") != null)
         {
             Debug.Log("Fail");
             isCorrect = false;
@@ -87,7 +88,7 @@ public class DoorSpawn : MonoBehaviour {
             Destroy(GameObject.Find("BlankDoorFlag"));
         }
 
-        if ((swipe.swipeDirection != dir) && (newDoor.name == door + "SwipeDoor(Clone)") && (swipe.swipeDirection != SwipeDirectionbyMouse.NONE))
+        else if ((swipe.swipeDirection != dir) && (newDoor.name == door + "SwipeDoor(Clone)") && (swipe.swipeDirection != SwipeDirectionbyMouse.NONE))
         {
             Debug.Log("Fail");
             isCorrect = false;
@@ -96,5 +97,3 @@ public class DoorSpawn : MonoBehaviour {
         }
     }
 }
-
-//update -> swipeDoor -> DestroyDoor -> AddScore -> newDoor.name == ~~~ -> UpdateScore
