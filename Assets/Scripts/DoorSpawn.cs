@@ -8,6 +8,7 @@ public class DoorSpawn : MonoBehaviour {
     public GameObject rightDoor;
     public GameObject upDoor;
     public GameObject newDoor;
+    public GameObject blankDoor;
 
     public bool isCorrect;
 
@@ -29,14 +30,15 @@ public class DoorSpawn : MonoBehaviour {
 
     public void SpawnWaves()
     {
-        GameObject[] Door = new GameObject[3];
+        GameObject[] Door = new GameObject[4];
         Door[0] = leftDoor;
         Door[1] = rightDoor;
         Door[2] = upDoor;
+        Door[3] = blankDoor;
 
         if (hg.hunger > 0)
         {
-            newDoor = Instantiate(Door[Random.Range(0, 3)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+            newDoor = Instantiate(Door[Random.Range(0, 4)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
         }
     }
 
@@ -76,6 +78,15 @@ public class DoorSpawn : MonoBehaviour {
 
     void IncorrectlySwiped(SwipeDirectionbyMouse dir, string door)
     {
+        if(swipe.swipeDirection != dir && newDoor.name == "BlankSwipeDoor(Clone)")
+        {
+            Debug.Log("Fail");
+            isCorrect = false;
+            swipe.directionChosen = false;
+            swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
+            Destroy(GameObject.Find("BlankDoorFlag"));
+        }
+
         if ((swipe.swipeDirection != dir) && (newDoor.name == door + "SwipeDoor(Clone)") && (swipe.swipeDirection != SwipeDirectionbyMouse.NONE))
         {
             Debug.Log("Fail");

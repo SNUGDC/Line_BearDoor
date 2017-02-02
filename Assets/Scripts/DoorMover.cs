@@ -23,6 +23,7 @@ public class DoorMover : MonoBehaviour {
                 transform.localScale += new Vector3(1.0f, 1.0f, 0.0f) * (doorSpeed); //normal speed + increase speed
             }
         }
+        //Destroy door if localScale is enough -> Hunger.cs
     }
 
     void OnDestroy() {

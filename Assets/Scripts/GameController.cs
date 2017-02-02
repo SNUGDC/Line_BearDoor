@@ -23,8 +23,12 @@ public class GameController : MonoBehaviour {
 
     Scene currentscene;
 
+    public static GameController Instance;
+
 	void Start()
     {
+        Instance = this;
+
         mouseTest = GetComponent<TestByMouse>();
         doorspawn = GetComponent<DoorSpawn>();
         treespawn = GetComponent<TreeSpawn>();
@@ -136,6 +140,10 @@ public class GameController : MonoBehaviour {
         else if (DoorSpawn.Instance.newDoor.name == "UpSwipeDoor(Clone)")
         {
             score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 3;
+        }
+        else if (DoorSpawn.Instance.newDoor.name == "BlankSwipeDoor_Dummy(Clone)")
+        {
+            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 4;
         }
         // score += 1 ; 
         UpdateScore();
