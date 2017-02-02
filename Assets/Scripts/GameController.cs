@@ -145,7 +145,18 @@ public class GameController : MonoBehaviour {
         {
             score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 4;
         }
-        // score += 1 ; 
+        else if(DoorSpawn.Instance.newDoor.name == "ReverseLeftSwipeDoor_Dummy(Clone)")
+        {
+            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 1.5f;
+        }
+        else if (DoorSpawn.Instance.newDoor.name == "ReverseRightSwipeDoor_Dummy(Clone)")
+        {
+            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 2.5f;
+        }
+        else if (DoorSpawn.Instance.newDoor.name == "ReverseUpSwipeDoor_Dummy(Clone)")
+        {
+            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 3.5f;
+        }
         UpdateScore();
     }
 
