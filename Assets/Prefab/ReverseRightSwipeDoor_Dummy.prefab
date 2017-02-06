@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4420675542400322}
   - component: {fileID: 212742040562940696}
+  - component: {fileID: 114959193477671336}
   m_Layer: 0
   m_Name: ReverseRightSwipeDoor_Dummy
   m_TagString: Untagged
@@ -70,6 +71,17 @@ Transform:
   m_Father: {fileID: 4420675542400322}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114959193477671336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1516371880385022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d5d755cf8ae044b8693ce77b5a7270, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212742040562940696
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -100,7 +112,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1317bf672fc48644fa251900b46fbdb7, type: 3}
   m_Color: {r: 0.42352942, g: 0.42352942, b: 1, a: 1}
   m_FlipX: 0
@@ -135,7 +147,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 055d3982a41943144a4030a455ed1794, type: 3}
   m_Color: {r: 0.42352942, g: 0.42352942, b: 1, a: 1}
   m_FlipX: 0
