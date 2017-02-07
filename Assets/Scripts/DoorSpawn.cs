@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DoorSpawn : MonoBehaviour {
+    
     public GameObject leftDoor;
     public GameObject rightDoor;
     public GameObject upDoor;
@@ -101,7 +102,7 @@ public class DoorSpawn : MonoBehaviour {
             if(door == "Left" && swipe.swipeDirection == SwipeDirectionbyMouse.RIGHT)
             {
                 Debug.Log("Correct!");
-                Destroy(GameObject.Find(door + "SwipeArrow"));
+                Destroy(newDoor.GetComponentInChildren<GameObject>());
                 gameController.AddScore();
                 isCorrect = true;
                 swipe.directionChosen = false;
