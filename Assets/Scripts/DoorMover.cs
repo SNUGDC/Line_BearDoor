@@ -28,7 +28,7 @@ public class DoorMover : MonoBehaviour {
 
     void OnDestroy() {
         if (DoorSpawn.Instance.isCorrect == true) {
-            doorSpeed += 0.0003f;
+            doorSpeed += 0.00015f;
         }
         if(DoorSpawn.Instance.isCorrect == false) {
             doorSpeed = 0.003f;

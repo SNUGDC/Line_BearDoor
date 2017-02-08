@@ -35,28 +35,28 @@ public class DoorSpawn : MonoBehaviour {
 
     public void SpawnWaves()
     {
-        GameObject[][] Door = new GameObject[3][];
-        Door[0][0] = leftDoor;
-        Door[0][1] = rightDoor;
-        Door[0][2] = upDoor;
-        Door[1][0] = blankDoor;
-        Door[2][0] = reverseleftDoor;
-        Door[2][1] = reverserightDoor;
-        Door[2][2] = reverseupDoor;
+        GameObject[] Door = new GameObject[7];
+        Door[0] = leftDoor;
+        Door[1] = rightDoor;
+        Door[2] = upDoor;
+        Door[3] = blankDoor;
+        Door[4] = reverseleftDoor;
+        Door[5] = reverserightDoor;
+        Door[6] = reverseupDoor;
 
         if (hg.hunger > 0)
         {
             if(combo < 5)
             {
-                newDoor = Instantiate(Door[0][Random.Range(0, 7)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+                newDoor = Instantiate(Door[Random.Range(0, 3)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
             }
             else if(combo < 10)
             {
-                newDoor = Instantiate(Door[Random.Range(0,2)][Random.Range(0, 7)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+                newDoor = Instantiate(Door[Random.Range(0, 4)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
             }
             else if(combo >= 10)
             {
-                newDoor = Instantiate(Door[Random.Range(0,3)][Random.Range(0, 7)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+                newDoor = Instantiate(Door[Random.Range(0, 7)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
             }
         }
     }
