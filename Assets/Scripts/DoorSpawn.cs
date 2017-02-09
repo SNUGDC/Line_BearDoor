@@ -1,7 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+[Serializable]
+public class Door
+{
+    public SwipeDirectionbyMouse direction;
+    public GameObject door;
+}
 
 public class DoorSpawn : MonoBehaviour {
     
@@ -13,6 +21,8 @@ public class DoorSpawn : MonoBehaviour {
     public GameObject reverseleftDoor;
     public GameObject reverserightDoor;
     public GameObject reverseupDoor;
+
+    public List<Door> doors;
 
     public bool isCorrect;
 
@@ -45,21 +55,21 @@ public class DoorSpawn : MonoBehaviour {
         Door[5] = reverserightDoor;
         Door[6] = reverseupDoor;
 
-        if (hg.hunger > 0)
+        /*if (hg.hunger > 0)
         {
             if(combo < 5)
             {
-                newDoor = Instantiate(Door[Random.Range(0, 3)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+                newDoor = Instantiate(Door[UnityEngine.Random.Range(0, 3)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
             }
             else if(combo < 10)
             {
-                newDoor = Instantiate(Door[Random.Range(0, 4)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+                newDoor = Instantiate(Door[UnityEngine.Random.Range(0, 4)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
             }
             else if(combo >= 10)
             {
-                newDoor = Instantiate(Door[Random.Range(0, 7)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+                newDoor = Instantiate(Door[UnityEngine.Random.Range(0, 7)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
             }
-        }
+        }*/
     }
 
     void Update()
