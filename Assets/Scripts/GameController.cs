@@ -152,15 +152,15 @@ public class GameController : MonoBehaviour {
         }
         else if(DoorSpawn.Instance.newDoor.name == "ReverseLeftSwipeDoor_Dummy(Clone)")
         {
-            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 1.5f;
+            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 5;
         }
         else if (DoorSpawn.Instance.newDoor.name == "ReverseRightSwipeDoor_Dummy(Clone)")
         {
-            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 2.5f;
+            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 6f;
         }
         else if (DoorSpawn.Instance.newDoor.name == "ReverseUpSwipeDoor_Dummy(Clone)")
         {
-            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 3.5f;
+            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 7f;
         }
         UpdateScore();
     }
