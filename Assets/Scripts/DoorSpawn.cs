@@ -20,6 +20,8 @@ public class DoorSpawn : MonoBehaviour {
     Hunger hg;
     GameController gameController;
 
+    private int combo = 0;
+
     public static DoorSpawn Instance = null;
 
     public void Initialize() {
@@ -45,7 +47,18 @@ public class DoorSpawn : MonoBehaviour {
 
         if (hg.hunger > 0)
         {
-            newDoor = Instantiate(Door[Random.Range(0, 7)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+            if(combo < 5)
+            {
+                newDoor = Instantiate(Door[Random.Range(0, 3)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+            }
+            else if(combo < 10)
+            {
+                newDoor = Instantiate(Door[Random.Range(0, 4)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+            }
+            else if(combo >= 10)
+            {
+                newDoor = Instantiate(Door[Random.Range(0, 7)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+            }
         }
     }
 
@@ -89,11 +102,13 @@ public class DoorSpawn : MonoBehaviour {
             Debug.Log("Correct!");
             Destroy(GameObject.Find(door + "SwipeArrow"));
             gameController.AddScore();
+            combo += 1;
             isCorrect = true;
             swipe.directionChosen = false;
             swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
         }
     }
+
 
     void ReverseCorrectlySwiped(SwipeDirectionbyMouse dir, string door)
     {
@@ -104,6 +119,7 @@ public class DoorSpawn : MonoBehaviour {
                 Debug.Log("Correct!");
                 Destroy(newDoor.GetComponentInChildren<GameObject>());
                 gameController.AddScore();
+                combo += 1;
                 isCorrect = true;
                 swipe.directionChosen = false;
                 swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
@@ -113,6 +129,7 @@ public class DoorSpawn : MonoBehaviour {
                 Debug.Log("Correct!");
                 Destroy(GameObject.Find(door + "SwipeArrow"));
                 gameController.AddScore();
+                combo += 1;
                 isCorrect = true;
                 swipe.directionChosen = false;
                 swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
@@ -122,6 +139,7 @@ public class DoorSpawn : MonoBehaviour {
                 Debug.Log("Correct!");
                 Destroy(GameObject.Find(door + "SwipeArrow"));
                 gameController.AddScore();
+                combo += 1;
                 isCorrect = true;
                 swipe.directionChosen = false;
                 swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
@@ -134,6 +152,7 @@ public class DoorSpawn : MonoBehaviour {
         if(swipe.swipeDirection != SwipeDirectionbyMouse.NONE && newDoor.name == "BlankSwipeDoor_Dummy(Clone)" && GameObject.Find("BlankDoorFlag") != null)
         {
             Debug.Log("Fail");
+            combo = 0;
             isCorrect = false;
             swipe.directionChosen = false;
             swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
@@ -144,6 +163,7 @@ public class DoorSpawn : MonoBehaviour {
         else if ((swipe.swipeDirection != dir) && (newDoor.name == door + "SwipeDoor(Clone)") && (swipe.swipeDirection != SwipeDirectionbyMouse.NONE))
         {
             Debug.Log("Fail");
+            combo = 0;
             isCorrect = false;
             swipe.directionChosen = false;
             swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
@@ -157,6 +177,7 @@ public class DoorSpawn : MonoBehaviour {
             if (door == "Left" && swipe.swipeDirection != SwipeDirectionbyMouse.RIGHT)
             {
                 Debug.Log("Fail");
+                combo = 0;
                 isCorrect = false;
                 swipe.directionChosen = false;
                 swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
@@ -164,6 +185,7 @@ public class DoorSpawn : MonoBehaviour {
             else if (door == "Right" && swipe.swipeDirection == SwipeDirectionbyMouse.LEFT)
             {
                 Debug.Log("Fail");
+                combo = 0;
                 isCorrect = false;
                 swipe.directionChosen = false;
                 swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
@@ -171,6 +193,7 @@ public class DoorSpawn : MonoBehaviour {
             else if (door == "Up" && swipe.swipeDirection == SwipeDirectionbyMouse.DOWN)
             {
                 Debug.Log("Fail");
+                combo = 0;
                 isCorrect = false;
                 swipe.directionChosen = false;
                 swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
