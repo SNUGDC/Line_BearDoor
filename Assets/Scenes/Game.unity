@@ -1897,6 +1897,13 @@ MonoBehaviour:
   rightDoor: {fileID: 1533398639789974, guid: 1c0c74dd73dcb8a43bc943a172784143, type: 2}
   upDoor: {fileID: 1124940263355900, guid: ba8cad42afaf7cd418e6e346a17464e5, type: 2}
   newDoor: {fileID: 0}
+  blankDoor: {fileID: 1735790550476876, guid: 37a69fc7bd9ca3b4f9a9ba837de832be, type: 2}
+  reverseleftDoor: {fileID: 1141356227186456, guid: 609c979a36fcbe746a07cc86d74a45a6,
+    type: 2}
+  reverserightDoor: {fileID: 1516371880385022, guid: 8b4b41a22208ab24cb78a2898dbbd250,
+    type: 2}
+  reverseupDoor: {fileID: 1555104976268112, guid: 33c2a39d07bda824685e45ec38770600,
+    type: 2}
   isCorrect: 0
 --- !u!4 &1609744842
 Transform:
