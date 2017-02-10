@@ -63,11 +63,7 @@ public class DoorSpawn : MonoBehaviour {
             }
             else if(combo < 10)
             {
-<<<<<<< HEAD
-                newDoor = Instantiate(doors[UnityEngine.Random.Range(0, 4)].door, new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
-=======
-                newDoor = Instantiate(Door[Random.Range(0, 3)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
->>>>>>> origin/master
+                newDoor = Instantiate(doors[UnityEngine.Random.Range(0, 3)].door, new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
             }
             else if(combo >= 10)
             {
