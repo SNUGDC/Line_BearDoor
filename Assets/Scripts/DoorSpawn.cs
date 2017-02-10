@@ -55,21 +55,21 @@ public class DoorSpawn : MonoBehaviour {
         Door[5] = reverserightDoor;
         Door[6] = reverseupDoor;
 
-        /*if (hg.hunger > 0)
+        if (hg.hunger > 0)
         {
             if(combo < 5)
             {
-                newDoor = Instantiate(Door[UnityEngine.Random.Range(0, 3)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+                newDoor = Instantiate(doors[UnityEngine.Random.Range(0, 3)].door, new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
             }
             else if(combo < 10)
             {
-                newDoor = Instantiate(Door[UnityEngine.Random.Range(0, 4)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+                newDoor = Instantiate(doors[UnityEngine.Random.Range(0, 4)].door, new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
             }
             else if(combo >= 10)
             {
-                newDoor = Instantiate(Door[UnityEngine.Random.Range(0, 7)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+                newDoor = Instantiate(doors[UnityEngine.Random.Range(0, 7)].door, new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
             }
-        }*/
+        }
     }
 
     void Update()
