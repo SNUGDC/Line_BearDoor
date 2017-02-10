@@ -46,14 +46,14 @@ public class DoorSpawn : MonoBehaviour {
 
     public void SpawnWaves()
     {
-        GameObject[] Door = new GameObject[7];
+        /*GameObject[] Door = new GameObject[7];
         Door[0] = leftDoor;
         Door[1] = rightDoor;
         Door[2] = upDoor;
         Door[3] = blankDoor;
         Door[4] = reverseleftDoor;
         Door[5] = reverserightDoor;
-        Door[6] = reverseupDoor;
+        Door[6] = reverseupDoor;*/
 
         if (hg.hunger > 0)
         {
