@@ -48,6 +48,7 @@ public class Hunger : MonoBehaviour {
                     Debug.Log("isHit");
                     hunger -= 100;
                     hungerbar.rectTransform.sizeDelta -= new Vector2(76, 0);
+                    doorSpawn.combo = 0;
                 }
                 if (doorSpawn.newDoor.name == "BlankSwipeDoor_Dummy(Clone)" && GameObject.Find("BlankDoorFlag") != null)
                 {

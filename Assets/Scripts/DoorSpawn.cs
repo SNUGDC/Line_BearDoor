@@ -30,7 +30,7 @@ public class DoorSpawn : MonoBehaviour {
     Hunger hg;
     GameController gameController;
 
-    private int combo = 0;
+    public int combo = 0;
 
     public static DoorSpawn Instance = null;
 
@@ -57,13 +57,17 @@ public class DoorSpawn : MonoBehaviour {
 
         if (hg.hunger > 0)
         {
-            if(combo < 5)
+            if(combo >= 0 && combo < 5)
             {
                 newDoor = Instantiate(doors[UnityEngine.Random.Range(0, 3)].door, new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
             }
             else if(combo < 10)
             {
+<<<<<<< HEAD
                 newDoor = Instantiate(doors[UnityEngine.Random.Range(0, 4)].door, new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+=======
+                newDoor = Instantiate(Door[Random.Range(0, 3)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+>>>>>>> origin/master
             }
             else if(combo >= 10)
             {
