@@ -119,6 +119,11 @@ public class DoorSpawn : MonoBehaviour {
         }
     }
 
+    void Swiped(SwipeDirectionbyMouse dir)
+    {
+
+    }
+
 
     void ReverseCorrectlySwiped(SwipeDirectionbyMouse dir, string door)
     {

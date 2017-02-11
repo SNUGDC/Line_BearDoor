@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public enum SwipeDirectionbyMouse
 {
@@ -16,9 +17,10 @@ public class TestByMouse : MonoBehaviour {
 
     public static TestByMouse Instance = null;
 
-    Vector2 direction1 = Vector2.zero;
-    Vector2 direction2 = Vector2.zero;
-    Vector2 mousePos = Vector2.zero;
+    Vector3 direction1 = Vector3.zero;
+    Vector3 direction2 = Vector3.zero;
+    public List<Vector3> circleDirection = new List<Vector3>();
+    Vector3 mousePos = Vector3.zero;
     float angle = 0;
     float swipeTerm = 0;
 
@@ -43,24 +45,46 @@ public class TestByMouse : MonoBehaviour {
         if (Input.GetMouseButton(0))
         {
             swipeTerm += Time.deltaTime;
-            if(swipeTerm > Time.deltaTime * 5)
+            if(swipeTerm > Time.deltaTime)
             {
                 swipeTerm = 0;
-                Vector2 tempPos = Input.mousePosition;
-                if (direction1 != Vector2.zero)
+                Vector3 tempPos = Input.mousePosition;
+                if (direction1 != Vector3.zero)
                 {
                     angle += Vector2.Angle(direction1, direction2);
+                    circleDirection.Add(Vector3.Cross(direction1, direction2).normalized);
+                    Debug.Log(Vector3.Cross(direction1, direction2).normalized);
                 }
                 direction1 = direction2;
                 direction2 = tempPos - mousePos;
                 mousePos = tempPos;
-                Debug.Log("angle : " + angle);
+                //Debug.Log("angle : " + angle);
+            }
+            if(angle >= 270 && circleDirection.Any(i => i != circleDirection[0]))
+            {
+                return;
+            }
+            else if(angle >= 270)
+            {
+                if(circleDirection[0] == new Vector3 (0,0,-1))
+                {
+                    Debug.Log("ClockWise");
+                }
+                if(circleDirection[0] == new Vector3 (0,0,1))
+                {
+                    Debug.Log("AntiClockWise");
+                }
             }
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             angle = 0;
+            swipeTerm = 0;
+            direction1 = Vector3.zero;
+            direction2 = Vector3.zero;
+            mousePos = Vector3.zero;
+            //circleDirection.Clear();
             Vector2 mousePositionV2 = Input.mousePosition;
 
             direction = mousePositionV2 - startPos;
