@@ -1850,6 +1850,8 @@ MonoBehaviour:
   startPos: {x: 0, y: 0}
   direction: {x: 0, y: 0}
   isSwiping: 0
+  circleDirection: []
+  minAngle: 100
 --- !u!114 &1609744839
 MonoBehaviour:
   m_ObjectHideFlags: 0
