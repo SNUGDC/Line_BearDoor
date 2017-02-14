@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
 public class GameController : MonoBehaviour {
     
     public Text countdown;
@@ -16,19 +15,27 @@ public class GameController : MonoBehaviour {
     public bool isStoped = false; //for Debugging
     public GameObject Bear;
 
-    TestByMouse mouseTest;
+    private Button pausebutton;
+
+    SwipeManager mouseTest;
     DoorSpawn doorspawn;
     TreeSpawn treespawn;
     RoadSpawn roadspawn;
 
     Scene currentscene;
 
-	void Start()
+    public static GameController Instance;
+
+	void Awake()
     {
-        mouseTest = GetComponent<TestByMouse>();
+        Instance = this;
+
+        mouseTest = GetComponent<SwipeManager>();
         doorspawn = GetComponent<DoorSpawn>();
         treespawn = GetComponent<TreeSpawn>();
         roadspawn = GetComponent<RoadSpawn>();
+
+        pausebutton = GameObject.Find("Pause_Button").GetComponent<Button>();
         
         scoreText.text = "0";
         gameoverText.text = "0";
@@ -87,6 +94,7 @@ public class GameController : MonoBehaviour {
 		doorspawn.enabled = false;
         treespawn.enabled = false;
         roadspawn.enabled = false;
+        pausebutton.enabled = false;
 		if (doorspawn.newDoor != null)
 		{
 			doorspawn.newDoor.GetComponent<DoorMover>().enabled = false;
@@ -108,6 +116,7 @@ public class GameController : MonoBehaviour {
 		doorspawn.enabled = true;
         treespawn.enabled = true;
         roadspawn.enabled = true;
+        pausebutton.enabled = true;
         if (doorspawn.newDoor != null)
 		{
 			doorspawn.newDoor.GetComponent<DoorMover>().enabled = true;
@@ -137,7 +146,22 @@ public class GameController : MonoBehaviour {
         {
             score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 3;
         }
-        // score += 1 ; 
+        else if (DoorSpawn.Instance.newDoor.name == "BlankSwipeDoor_Dummy(Clone)")
+        {
+            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 4;
+        }
+        else if(DoorSpawn.Instance.newDoor.name == "ReverseLeftSwipeDoor_Dummy(Clone)")
+        {
+            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 5;
+        }
+        else if (DoorSpawn.Instance.newDoor.name == "ReverseRightSwipeDoor_Dummy(Clone)")
+        {
+            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 6f;
+        }
+        else if (DoorSpawn.Instance.newDoor.name == "ReverseUpSwipeDoor_Dummy(Clone)")
+        {
+            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 7f;
+        }
         UpdateScore();
     }
 

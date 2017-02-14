@@ -1,42 +1,63 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[Serializable]
+public class Door
+{
+    public SwipeDirectionbyMouse direction;
+    public DoorComponent door;
+}
+
 public class DoorSpawn : MonoBehaviour {
-    public GameObject leftDoor;
-    public GameObject rightDoor;
-    public GameObject upDoor;
-    public GameObject newDoor;
+    
+    public DoorComponent newDoor;
+
+    public List<Door> doors;
 
     public bool isCorrect;
 
-    TestByMouse swipe;
+    SwipeManager swipe;
     Hunger hg;
     GameController gameController;
+
+    public int combo = 0;
 
     public static DoorSpawn Instance = null;
 
     public void Initialize() {
         Instance = this;
 
-        swipe = GetComponent<TestByMouse>();
+        swipe = GetComponent<SwipeManager>();
+        Debug.Assert(swipe != null);
         hg = GetComponent<Hunger>();
+        Debug.Assert(hg != null);
         gameController = GetComponent<GameController>();
-
+        Debug.Assert(gameController != null);
         SpawnWaves();
     }
 
     public void SpawnWaves()
     {
-        GameObject[] Door = new GameObject[3];
-        Door[0] = leftDoor;
-        Door[1] = rightDoor;
-        Door[2] = upDoor;
-
         if (hg.hunger > 0)
         {
-            newDoor = Instantiate(Door[Random.Range(0, 3)], new Vector3(0, 1.3f, 0), Quaternion.identity) as GameObject;
+            Door randomDoor = null;
+            if(combo < 5)
+            {
+                randomDoor = doors[UnityEngine.Random.Range(0, 3)];
+            }
+            else if(combo < 10)
+            {
+                randomDoor = doors[UnityEngine.Random.Range(0, 3)];
+            }
+            else
+            {
+                randomDoor = doors[UnityEngine.Random.Range(0, 7)];
+            }
+
+            newDoor = Instantiate(randomDoor.door, new Vector3(0, 1.3f, 0), Quaternion.identity) as DoorComponent;
         }
     }
 
@@ -49,41 +70,42 @@ public class DoorSpawn : MonoBehaviour {
     {
         if(newDoor != null)
         {
-            CorrectlySwiped(SwipeDirectionbyMouse.LEFT, "Left");
-            CorrectlySwiped(SwipeDirectionbyMouse.RIGHT, "Right");
-            CorrectlySwiped(SwipeDirectionbyMouse.UP, "Up");
-            //Destroy and AddScore if Correctly Swiped
+            CorrectlySwiped();
 
-            IncorrectlySwiped(SwipeDirectionbyMouse.LEFT, "Left");
-            IncorrectlySwiped(SwipeDirectionbyMouse.RIGHT, "Right");
-            IncorrectlySwiped(SwipeDirectionbyMouse.UP, "Up");
-            //Destroy if Incorrectly Swiped
+            IncorrectlySwiped();
+            //Flag Failure if Incorrectly Reverse Swiped
+
         }
     }
 
-    void CorrectlySwiped(SwipeDirectionbyMouse dir, string door)
+    void CorrectlySwiped()
     {
-        if ((swipe.swipeDirection == dir) && (newDoor.name == door + "SwipeDoor(Clone)") && (GameObject.Find(door + "SwipeArrow") != null))
+        SwipeDirectionbyMouse doorDir = newDoor.direction;
+        if (swipe.swipeDirection == doorDir)
         {
             Debug.Log("Correct!");
-            Destroy(GameObject.Find(door + "SwipeArrow"));
+            Destroy(newDoor.arrow);
             gameController.AddScore();
+            combo += 1;
             isCorrect = true;
             swipe.directionChosen = false;
             swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
         }
     }
-
-    void IncorrectlySwiped(SwipeDirectionbyMouse dir, string door)
+    void IncorrectlySwiped()
     {
-        if ((swipe.swipeDirection != dir) && (newDoor.name == door + "SwipeDoor(Clone)") && (swipe.swipeDirection != SwipeDirectionbyMouse.NONE))
+        SwipeDirectionbyMouse doorDir = newDoor.direction;
+        if(swipe.swipeDirection != doorDir)
         {
             Debug.Log("Fail");
+            combo = 0;
             isCorrect = false;
             swipe.directionChosen = false;
             swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
+            if(newDoor.direction == SwipeDirectionbyMouse.NONE)
+            {
+                Destroy(newDoor.arrow);
+            }
         }
     }
 }
-
-//update -> swipeDoor -> DestroyDoor -> AddScore -> newDoor.name == ~~~ -> UpdateScore

@@ -42,13 +42,19 @@ public class Hunger : MonoBehaviour {
 
             if (doorSpawn.newDoor.transform.localScale.x >= 0.3f && doorSpawn.newDoor.transform.localScale.y >= 0.3f && doorSpawn.newDoor.transform.localScale.z >= 1.0f)
             {
-                if (GameObject.Find("LeftSwipeArrow") != null || GameObject.Find("RightSwipeArrow") != null || GameObject.Find("UpSwipeArrow") != null)
+                if (GameObject.Find("LeftSwipeArrow") != null || GameObject.Find("RightSwipeArrow") != null || GameObject.Find("UpSwipeArrow") != null 
+                    && DoorSpawn.Instance.newDoor.name != "BlankSwipeDoor_Dummy(Clone)")
                 {
                     Debug.Log("isHit");
                     hunger -= 100;
                     hungerbar.rectTransform.sizeDelta -= new Vector2(76, 0);
+                    doorSpawn.combo = 0;
                 }
-                Destroy(doorSpawn.newDoor);
+                if (doorSpawn.newDoor.name == "BlankSwipeDoor_Dummy(Clone)" && GameObject.Find("BlankDoorFlag") != null)
+                {
+                    GameController.Instance.AddScore();
+                }
+                Destroy(doorSpawn.newDoor.gameObject);
                 DoorSpawn.Instance.SpawnWaves();
             }
         }
