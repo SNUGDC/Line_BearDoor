@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4569621949731634}
   - component: {fileID: 212706156916918046}
   - component: {fileID: 114803745042423854}
+  - component: {fileID: 114268642486825308}
   m_Layer: 0
   m_Name: LeftSwipeDoor
   m_TagString: Door
@@ -71,6 +72,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 1.3, z: 0}
+--- !u!114 &114268642486825308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780726226095910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8eaedc678e05049999552a1ec2c446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 1
+  arrow: {fileID: 1330832222802726}
 --- !u!114 &114803745042423854
 MonoBehaviour:
   m_ObjectHideFlags: 1

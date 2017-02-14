@@ -1895,32 +1895,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82654063ad5c305479b2783fc2d48c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftDoor: {fileID: 1780726226095910, guid: d365948692d4f8e48b28f380bd4d8599, type: 2}
-  rightDoor: {fileID: 1533398639789974, guid: 1c0c74dd73dcb8a43bc943a172784143, type: 2}
-  upDoor: {fileID: 1124940263355900, guid: ba8cad42afaf7cd418e6e346a17464e5, type: 2}
   newDoor: {fileID: 0}
-  blankDoor: {fileID: 1735790550476876, guid: 37a69fc7bd9ca3b4f9a9ba837de832be, type: 2}
-  reverseleftDoor: {fileID: 1141356227186456, guid: 609c979a36fcbe746a07cc86d74a45a6,
-    type: 2}
-  reverserightDoor: {fileID: 1516371880385022, guid: 8b4b41a22208ab24cb78a2898dbbd250,
-    type: 2}
-  reverseupDoor: {fileID: 1555104976268112, guid: 33c2a39d07bda824685e45ec38770600,
-    type: 2}
   doors:
   - direction: 1
-    door: {fileID: 1780726226095910, guid: d365948692d4f8e48b28f380bd4d8599, type: 2}
+    door: {fileID: 114268642486825308, guid: d365948692d4f8e48b28f380bd4d8599, type: 2}
   - direction: 2
-    door: {fileID: 1533398639789974, guid: 1c0c74dd73dcb8a43bc943a172784143, type: 2}
+    door: {fileID: 114617291560403306, guid: 1c0c74dd73dcb8a43bc943a172784143, type: 2}
   - direction: 3
-    door: {fileID: 1124940263355900, guid: ba8cad42afaf7cd418e6e346a17464e5, type: 2}
+    door: {fileID: 114897106170848094, guid: ba8cad42afaf7cd418e6e346a17464e5, type: 2}
   - direction: 0
-    door: {fileID: 1735790550476876, guid: 37a69fc7bd9ca3b4f9a9ba837de832be, type: 2}
+    door: {fileID: 114137428780995632, guid: 37a69fc7bd9ca3b4f9a9ba837de832be, type: 2}
   - direction: 2
-    door: {fileID: 1141356227186456, guid: 609c979a36fcbe746a07cc86d74a45a6, type: 2}
+    door: {fileID: 114428358316903390, guid: 609c979a36fcbe746a07cc86d74a45a6, type: 2}
   - direction: 1
-    door: {fileID: 1516371880385022, guid: 8b4b41a22208ab24cb78a2898dbbd250, type: 2}
+    door: {fileID: 114520950854992894, guid: 8b4b41a22208ab24cb78a2898dbbd250, type: 2}
   - direction: 4
-    door: {fileID: 1555104976268112, guid: 33c2a39d07bda824685e45ec38770600, type: 2}
+    door: {fileID: 114423565348063172, guid: 33c2a39d07bda824685e45ec38770600, type: 2}
   isCorrect: 0
   combo: 0
 --- !u!4 &1609744842

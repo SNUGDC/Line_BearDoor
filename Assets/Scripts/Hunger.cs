@@ -54,7 +54,7 @@ public class Hunger : MonoBehaviour {
                 {
                     GameController.Instance.AddScore();
                 }
-                Destroy(doorSpawn.newDoor);
+                Destroy(doorSpawn.newDoor.gameObject);
                 DoorSpawn.Instance.SpawnWaves();
             }
         }

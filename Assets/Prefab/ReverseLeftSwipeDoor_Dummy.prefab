@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4455580396441768}
   - component: {fileID: 212277071634469152}
   - component: {fileID: 114153985873924504}
+  - component: {fileID: 114428358316903390}
   m_Layer: 0
   m_Name: ReverseLeftSwipeDoor_Dummy
   m_TagString: Untagged
@@ -82,6 +83,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d5d755cf8ae044b8693ce77b5a7270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114428358316903390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1141356227186456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8eaedc678e05049999552a1ec2c446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 2
+  arrow: {fileID: 1248739020201106}
 --- !u!212 &212277071634469152
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4053698654898098}
   - component: {fileID: 212095847321698856}
+  - component: {fileID: 114649416140769174}
   m_Layer: 0
   m_Name: UpSwipeDoor_Dummy
   m_TagString: Untagged
@@ -70,6 +71,19 @@ Transform:
   m_Father: {fileID: 4053698654898098}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114649416140769174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1798034912291806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8eaedc678e05049999552a1ec2c446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
+  arrow: {fileID: 0}
 --- !u!212 &212095847321698856
 SpriteRenderer:
   m_ObjectHideFlags: 1
