@@ -13,20 +13,13 @@ public class Door
 
 public class DoorSpawn : MonoBehaviour {
     
-    public GameObject leftDoor;
-    public GameObject rightDoor;
-    public GameObject upDoor;
     public GameObject newDoor;
-    public GameObject blankDoor;
-    public GameObject reverseleftDoor;
-    public GameObject reverserightDoor;
-    public GameObject reverseupDoor;
 
     public List<Door> doors;
 
     public bool isCorrect;
 
-    TestByMouse swipe;
+    SwipeManager swipe;
     Hunger hg;
     GameController gameController;
 
@@ -37,7 +30,7 @@ public class DoorSpawn : MonoBehaviour {
     public void Initialize() {
         Instance = this;
 
-        swipe = GetComponent<TestByMouse>();
+        swipe = GetComponent<SwipeManager>();
         hg = GetComponent<Hunger>();
         gameController = GetComponent<GameController>();
 
@@ -46,15 +39,6 @@ public class DoorSpawn : MonoBehaviour {
 
     public void SpawnWaves()
     {
-        /*GameObject[] Door = new GameObject[7];
-        Door[0] = leftDoor;
-        Door[1] = rightDoor;
-        Door[2] = upDoor;
-        Door[3] = blankDoor;
-        Door[4] = reverseleftDoor;
-        Door[5] = reverserightDoor;
-        Door[6] = reverseupDoor;*/
-
         if (hg.hunger > 0)
         {
             if(combo >= 0 && combo < 5)

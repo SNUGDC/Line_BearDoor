@@ -33,7 +33,7 @@ public class DoorMover : MonoBehaviour {
         if(DoorSpawn.Instance.isCorrect == false) {
             doorSpeed = 0.003f;
         }
-        TestByMouse.Instance.swipeDirection = SwipeDirectionbyMouse.NONE;
+        SwipeManager.Instance.swipeDirection = SwipeDirectionbyMouse.NONE;
         DoorSpawn.Instance.isCorrect = false;
     }
 

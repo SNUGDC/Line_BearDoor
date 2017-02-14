@@ -8,14 +8,14 @@ public enum SwipeDirectionbyMouse
     NONE=0, LEFT, RIGHT, UP, DOWN
 }
 
-public class TestByMouse : MonoBehaviour {
+public class SwipeManager : MonoBehaviour {
     public SwipeDirectionbyMouse swipeDirection;
     public bool directionChosen;
     public Vector2 startPos;
     public Vector2 direction;
     public bool isSwiping;
 
-    public static TestByMouse Instance = null;
+    public static SwipeManager Instance = null;
 
     Vector3 direction1 = Vector3.zero;
     Vector3 direction2 = Vector3.zero;

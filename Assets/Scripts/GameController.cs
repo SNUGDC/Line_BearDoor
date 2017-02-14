@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour {
 
     private Button pausebutton;
 
-    TestByMouse mouseTest;
+    SwipeManager mouseTest;
     DoorSpawn doorspawn;
     TreeSpawn treespawn;
     RoadSpawn roadspawn;
@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour {
     {
         Instance = this;
 
-        mouseTest = GetComponent<TestByMouse>();
+        mouseTest = GetComponent<SwipeManager>();
         doorspawn = GetComponent<DoorSpawn>();
         treespawn = GetComponent<TreeSpawn>();
         roadspawn = GetComponent<RoadSpawn>();
