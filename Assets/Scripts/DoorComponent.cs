@@ -5,4 +5,5 @@ using UnityEngine;
 public class DoorComponent : MonoBehaviour {
     public SwipeDirectionbyMouse direction = SwipeDirectionbyMouse.NONE;
     public GameObject arrow;
+    public bool isReverseDoor;
 }
