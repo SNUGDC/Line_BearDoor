@@ -132,35 +132,41 @@ public class GameController : MonoBehaviour {
         isStoped = false;
 	}
     
-    public void AddScore()
+    public void AddScore(SwipeDirectionbyMouse dir)
     {
-        if (DoorSpawn.Instance.newDoor.name == "LeftSwipeDoor(Clone)")
+        if (GetComponent<DoorSpawn>().newDoor.isReverseDoor == false)
         {
-            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 1;
+            if (dir == SwipeDirectionbyMouse.LEFT)
+            {
+                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 1;
+            }
+            else if (dir == SwipeDirectionbyMouse.RIGHT)
+            {
+                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 2;
+            }
+            else if (dir == SwipeDirectionbyMouse.UP)
+            {
+                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 3;
+            }
+            else if (dir == SwipeDirectionbyMouse.NONE)
+            {
+                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 4;
+            }
         }
-        else if (DoorSpawn.Instance.newDoor.name == "RightSwipeDoor(Clone)")
+        else
         {
-            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 2;
-        }
-        else if (DoorSpawn.Instance.newDoor.name == "UpSwipeDoor(Clone)")
-        {
-            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 3;
-        }
-        else if (DoorSpawn.Instance.newDoor.name == "BlankSwipeDoor_Dummy(Clone)")
-        {
-            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 4;
-        }
-        else if(DoorSpawn.Instance.newDoor.name == "ReverseLeftSwipeDoor_Dummy(Clone)")
-        {
-            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 5;
-        }
-        else if (DoorSpawn.Instance.newDoor.name == "ReverseRightSwipeDoor_Dummy(Clone)")
-        {
-            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 6f;
-        }
-        else if (DoorSpawn.Instance.newDoor.name == "ReverseUpSwipeDoor_Dummy(Clone)")
-        {
-            score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 7f;
+            if (dir == SwipeDirectionbyMouse.RIGHT)
+            {
+                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 5;
+            }
+            else if (dir == SwipeDirectionbyMouse.LEFT)
+            {
+                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 6f;
+            }
+            else if (dir == SwipeDirectionbyMouse.DOWN)
+            {
+                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 7f;
+            }
         }
         UpdateScore();
     }

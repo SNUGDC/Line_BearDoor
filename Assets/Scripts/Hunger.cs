@@ -52,7 +52,7 @@ public class Hunger : MonoBehaviour {
                 }
                 if (doorSpawn.newDoor.name == "BlankSwipeDoor_Dummy(Clone)" && GameObject.Find("BlankDoorFlag") != null)
                 {
-                    GameController.Instance.AddScore();
+                    GameController.Instance.AddScore(doorSpawn.newDoor.direction);
                 }
                 Destroy(doorSpawn.newDoor.gameObject);
                 DoorSpawn.Instance.SpawnWaves();
