@@ -85,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 4
   arrow: {fileID: 1644482172882420}
+  isReverseDoor: 1
 --- !u!114 &114705539552822588
 MonoBehaviour:
   m_ObjectHideFlags: 1
