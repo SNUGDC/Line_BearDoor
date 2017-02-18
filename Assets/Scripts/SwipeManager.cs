@@ -90,6 +90,7 @@ public class SwipeManager : MonoBehaviour {
 
             direction = mousePositionV2 - startPos;
             DirectionChoose();
+            GetComponent<DoorSpawn>().SwipeDoor();
         }
     }
 

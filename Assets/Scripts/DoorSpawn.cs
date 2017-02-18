@@ -61,51 +61,36 @@ public class DoorSpawn : MonoBehaviour {
         }
     }
 
-    void Update()
-    {
-        SwipeDoor();
-    }
-
-    void SwipeDoor()
+    public void SwipeDoor()
     {
         if(newDoor != null)
         {
-            CorrectlySwiped();
-
-            IncorrectlySwiped();
+            SwipeDirectionbyMouse doorDir = newDoor.direction;
+            if (swipe.swipeDirection == doorDir)
+            {
+                Debug.Log("Correct!");
+                Destroy(newDoor.arrow);
+                gameController.AddScore(newDoor.direction);
+                combo += 1;
+                isCorrect = true;
+                swipe.directionChosen = false;
+                swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
+                return;
+            }
+            else if (swipe.swipeDirection != doorDir)
+            {
+                Debug.Log("Fail");
+                combo = 0;
+                isCorrect = false;
+                swipe.directionChosen = false;
+                if (newDoor.direction == SwipeDirectionbyMouse.NONE)
+                {
+                    Destroy(newDoor.arrow);
+                }
+                swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
+            }
             //Flag Failure if Incorrectly Reverse Swiped
 
-        }
-    }
-
-    void CorrectlySwiped()
-    {
-        SwipeDirectionbyMouse doorDir = newDoor.direction;
-        if (swipe.swipeDirection == doorDir)
-        {
-            Debug.Log("Correct!");
-            Destroy(newDoor.arrow);
-            gameController.AddScore(newDoor.direction);
-            combo += 1;
-            isCorrect = true;
-            swipe.directionChosen = false;
-            swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
-        }
-    }
-    void IncorrectlySwiped()
-    {
-        SwipeDirectionbyMouse doorDir = newDoor.direction;
-        if(swipe.swipeDirection != doorDir)
-        {
-            Debug.Log("Fail");
-            combo = 0;
-            isCorrect = false;
-            swipe.directionChosen = false;
-            if (newDoor.direction == SwipeDirectionbyMouse.NONE)
-            {
-                Destroy(newDoor.arrow);
-            }
-            swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
         }
     }
 }
