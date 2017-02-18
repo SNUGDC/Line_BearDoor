@@ -4,6 +4,40 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+public class LevelContext
+{
+    public float Doorspeed { get; set; }
+    public float initialSpeed;
+    public float Hunger;
+
+    public int combo = 0;
+
+    public LevelContext(float speed, float hp)
+    {
+        this.Doorspeed = speed;
+        initialSpeed = speed;
+        this.Hunger = hp;
+    }
+
+    public void IncreaseLevel()
+    {
+        if (combo < 10)
+        {
+            this.combo++;
+        }
+
+        Doorspeed = initialSpeed + combo / 5 * initialSpeed * 0.5f;
+        Debug.Log(combo);
+    }
+    public void ResetLevel()
+    {
+        combo = 0;
+        Doorspeed = initialSpeed;
+        Hunger -= 100;
+        Debug.Log(combo);
+    }
+}
+
 public class GameController : MonoBehaviour {
     
     public Text countdown;
@@ -23,8 +57,12 @@ public class GameController : MonoBehaviour {
     RoadSpawn roadspawn;
 
     Scene currentscene;
+    public LevelContext currentLevel;
 
     public static GameController Instance;
+
+    public float initialDoorSpeed;
+    public float initialHp;
 
 	void Awake()
     {
@@ -34,6 +72,7 @@ public class GameController : MonoBehaviour {
         doorspawn = GetComponent<DoorSpawn>();
         treespawn = GetComponent<TreeSpawn>();
         roadspawn = GetComponent<RoadSpawn>();
+        currentLevel = new LevelContext(initialDoorSpeed, initialHp);
 
         pausebutton = GameObject.Find("Pause_Button").GetComponent<Button>();
         
@@ -134,46 +173,46 @@ public class GameController : MonoBehaviour {
     
     public void AddScore(SwipeDirectionbyMouse dir)
     {
-        if (GetComponent<DoorSpawn>().newDoor.isReverseDoor == false)
+        if (GetComponent<DoorSpawn>().newDoor.isReverseDoor == false) // reverse door 이 아닐 경우
         {
             if (dir == SwipeDirectionbyMouse.LEFT)
             {
-                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 1;
+                score += (currentLevel.Doorspeed * 100000 / 3) * 1;
             }
             else if (dir == SwipeDirectionbyMouse.RIGHT)
             {
-                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 2;
+                score += (currentLevel.Doorspeed * 100000 / 3) * 2;
             }
             else if (dir == SwipeDirectionbyMouse.UP)
             {
-                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 3;
+                score += (currentLevel.Doorspeed * 100000 / 3) * 3;
             }
             else if (dir == SwipeDirectionbyMouse.NONE)
             {
-                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 4;
+                score += (currentLevel.Doorspeed * 100000 / 3) * 4;
             }
             else if (dir == SwipeDirectionbyMouse.ClockWise)
             {
-                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 4;//임시
+                score += (currentLevel.Doorspeed * 100000 / 3) * 4;//임시
             }
             else if (dir == SwipeDirectionbyMouse.CounterClockWise)
             {
-                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 4;//임시
+                score += (currentLevel.Doorspeed * 100000 / 3) * 4;//임시
             }
         }
-        else
+        else //reverse door일 경우
         {
             if (dir == SwipeDirectionbyMouse.RIGHT)
             {
-                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 5;
+                score += (currentLevel.Doorspeed * 100000 / 3) * 5;
             }
             else if (dir == SwipeDirectionbyMouse.LEFT)
             {
-                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 6f;
+                score += (currentLevel.Doorspeed * 100000 / 3) * 6f;
             }
             else if (dir == SwipeDirectionbyMouse.DOWN)
             {
-                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 7f;
+                score += (currentLevel.Doorspeed * 100000 / 3) * 7f;
             }
         }
         UpdateScore();
@@ -183,7 +222,6 @@ public class GameController : MonoBehaviour {
     {
         scoreText.text = " " + score;
         gameoverText.text = score.ToString();
-        Debug.Log(score);
     }
 }
 

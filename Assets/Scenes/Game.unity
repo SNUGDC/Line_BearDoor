@@ -1941,12 +1941,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a929df414a1aa5c458c3d1ef1eac01e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hunger: 1000
   hungerbar: {fileID: 2145526068}
   restart_button: {fileID: 1764557812}
   home_button: {fileID: 479391753}
   hunger_text: {fileID: 0}
   gameover: {fileID: 1521465873}
+  HpLosePerSec: 10
 --- !u!114 &1609744841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2012,6 +2012,8 @@ MonoBehaviour:
   score: 0
   isStoped: 0
   Bear: {fileID: 407067229}
+  initialDoorSpeed: 0.8
+  initialHp: 1000
 --- !u!114 &1609744844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2850,8 +2852,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -540.00006, y: 0.000061035156}
-  m_SizeDelta: {x: 1080, y: 336}
+  m_AnchoredPosition: {x: -460, y: 1.0001}
+  m_SizeDelta: {x: 1000, y: 336}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2145526068
 MonoBehaviour:
@@ -2873,7 +2875,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 7267d51ed8173cf4ab98d37a81fff5f8, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

@@ -73,7 +73,7 @@ public class SwipeManager : MonoBehaviour {
             Debug.Log("angle : " + angle);
             angleText.text = "angle : " + angle;
             int dirCount = circleDirection.Count();
-            if (!circleDirection.Any(i => i != circleDirection[0]) && angle >= minAngle)
+            if (angle >= minAngle)
             {
                 IGrouping<bool, Vector3> registeredGroup = circleDirection
                     .GroupBy(a => IsClockWise(a))
@@ -83,7 +83,6 @@ public class SwipeManager : MonoBehaviour {
                     if (registeredGroup.Key)
                     {
                         swipeDirection = SwipeDirectionbyMouse.ClockWise;
-                        Debug.Log("ClockWise");
                         circleDirectionText.text = "ClockWise";
                         ResetDirection();
                         GetComponent<DoorSpawn>().SwipeDoor();
@@ -92,7 +91,6 @@ public class SwipeManager : MonoBehaviour {
                     else
                     {
                         swipeDirection = SwipeDirectionbyMouse.CounterClockWise;
-                        Debug.Log("CounterClockWise");
                         circleDirectionText.text = "CounterClockWise";
                         ResetDirection();
                         GetComponent<DoorSpawn>().SwipeDoor();
