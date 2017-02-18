@@ -152,6 +152,14 @@ public class GameController : MonoBehaviour {
             {
                 score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 4;
             }
+            else if (dir == SwipeDirectionbyMouse.ClockWise)
+            {
+                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 4;//임시
+            }
+            else if (dir == SwipeDirectionbyMouse.CounterClockWise)
+            {
+                score += (DoorMover.Instance.DoorSpeed() * 100000 / 3) * 4;//임시
+            }
         }
         else
         {

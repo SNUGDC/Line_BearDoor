@@ -46,15 +46,15 @@ public class DoorSpawn : MonoBehaviour {
             Door randomDoor = null;
             if(combo < 5)
             {
-                randomDoor = doors[UnityEngine.Random.Range(0, 3)];
+                randomDoor = doors[UnityEngine.Random.Range(7, 9)];
             }
             else if(combo < 10)
             {
-                randomDoor = doors[UnityEngine.Random.Range(0, 3)];
+                randomDoor = doors[UnityEngine.Random.Range(7, 9)];
             }
             else
             {
-                randomDoor = doors[UnityEngine.Random.Range(0, 7)];
+                randomDoor = doors[UnityEngine.Random.Range(7, 9)];
             }
 
             newDoor = Instantiate(randomDoor.door, new Vector3(0, 1.3f, 0), Quaternion.identity) as DoorComponent;
