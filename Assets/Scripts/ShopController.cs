@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ShopController : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class ShopController : MonoBehaviour
 
     public void CheatBlueberry()
     {
-        PlayerPrefs.SetInt("Blueberry", PlayerPrefs.GetInt("Blueberry") + 100);
+        PlayerPrefs.SetInt("Blueberry", PlayerPrefs.GetInt("Blueberry") + 1000);
     }
 
     public void CheatHoney()
@@ -52,139 +53,134 @@ public class ShopController : MonoBehaviour
         PlayerPrefs.SetInt("Honey", PlayerPrefs.GetInt("Honey") + 100);
     }
 
-    public void CanBuy1stBearByBlueberry()
+    public void CanBuyPinkBearByBlueberry()
     {
-        if (Blueberry >= BearPrice_Bb[0])
+        if (PlayerPrefs.GetString("Pink Bear") != "Bought")
         {
-            PlayerPrefs.SetInt("Blueberry", PlayerPrefs.GetInt("Blueberry") - BearPrice_Bb[0]);
-            Debug.Log("너는 첫번째 곰을 블루베리로 샀다!");
+            if (Blueberry >= BearPrice_Bb[0])
+            {
+                PlayerPrefs.SetInt("Blueberry", PlayerPrefs.GetInt("Blueberry") - BearPrice_Bb[0]);
+                PlayerPrefs.SetString("Pink Bear", "Bought");
+                Debug.Log("너는 핑꾸곰을 블루베리로 샀다!");
+            }
+            else
+            {
+                Debug.Log("너는 핑꾸곰을 사기에는 블루베리가 부족하다...");
+            }
         }
         else
         {
-            Debug.Log("너는 첫번째 곰을 사기에는 블루베리가 부족하다...");
+            Debug.Log("이미 길들인 곰이다.");
         }
     }
 
-    public void CanBuy1stBearByHoney()
+    public void CanBuyPinkBearByHoney()
     {
-        if (Honey >= BearPrice_H[0])
+        if (PlayerPrefs.GetString("Pink Bear") != "Bought")
         {
-            PlayerPrefs.SetInt("Honey", PlayerPrefs.GetInt("Honey") - BearPrice_H[0]);
-            Debug.Log("너는 첫번째 곰을 꿀로 샀다!");
+            if (Honey >= BearPrice_H[0])
+            {
+                PlayerPrefs.SetInt("Honey", PlayerPrefs.GetInt("Honey") - BearPrice_H[0]);
+                PlayerPrefs.SetString("Pink Bear", "Bought");
+                Debug.Log("너는 핑꾸곰을 꿀로 샀다!");
+            }
+            else
+            {
+                Debug.Log("너는 핑꾸곰을 사기에는 꿀이 부족하다...");
+            }
         }
         else
         {
-            Debug.Log("너는 첫번째 곰을 사기에는 꿀이 부족하다...");
+            Debug.Log("이미 길들인 곰이다.");
         }
     }
 
-    public void CanBuy2stBearByBlueberry()
+    public void CanBuyAngryBearByBlueberry()
     {
-        if (Blueberry >= BearPrice_Bb[1])
+        if (PlayerPrefs.GetString("Angry Bear") != "Bought")
         {
-            PlayerPrefs.SetInt("Blueberry", PlayerPrefs.GetInt("Blueberry") - BearPrice_Bb[1]);
-            Debug.Log("너는 두번째 곰을 블루베리로 샀다!");
+            if (Blueberry >= BearPrice_Bb[1])
+            {
+                PlayerPrefs.SetInt("Blueberry", PlayerPrefs.GetInt("Blueberry") - BearPrice_Bb[1]);
+                PlayerPrefs.SetString("Angry Bear", "Bought");
+                Debug.Log("너는 화난곰을 블루베리로 샀다!");
+            }
+            else
+            {
+                Debug.Log("너는 화난곰을 사기에는 블루베리가 부족하다...");
+            }
         }
         else
         {
-            Debug.Log("너는 두번째 곰을 사기에는 블루베리가 부족하다...");
+            Debug.Log("이미 길들인 곰이다.");
         }
     }
 
-    public void CanBuy2stBearByHoney()
+    public void CanBuyAngryBearByHoney()
     {
-        if (Honey >= BearPrice_H[1])
+        if (PlayerPrefs.GetString("Angry Bear") != "Bought")
         {
-            PlayerPrefs.SetInt("Honey", PlayerPrefs.GetInt("Honey") - BearPrice_H[1]);
-            Debug.Log("너는 두번째 곰을 꿀로 샀다!");
+            if (Honey >= BearPrice_H[1])
+            {
+                PlayerPrefs.SetInt("Honey", PlayerPrefs.GetInt("Honey") - BearPrice_H[1]);
+                PlayerPrefs.SetString("Angry Bear", "Bought");
+                Debug.Log("너는 화난곰을 꿀로 샀다!");
+            }
+            else
+            {
+                Debug.Log("너는 화난곰을 사기에는 꿀이 부족하다...");
+            }
         }
         else
         {
-            Debug.Log("너는 두번째 곰을 사기에는 꿀이 부족하다...");
+            Debug.Log("이미 길들인 곰이다.");
         }
     }
 
-    public void CanBuy3stBearByBlueberry()
+    public void CanBuyHoneyBearByBlueberry()
     {
-        if (Blueberry >= BearPrice_Bb[2])
+        if (PlayerPrefs.GetString("Honey Bear") != "Bought")
         {
-            PlayerPrefs.SetInt("Blueberry", PlayerPrefs.GetInt("Blueberry") - BearPrice_Bb[2]);
-            Debug.Log("너는 세번째 곰을 블루베리로 샀다!");
+            if (Blueberry >= BearPrice_Bb[2])
+            {
+                PlayerPrefs.SetInt("Blueberry", PlayerPrefs.GetInt("Blueberry") - BearPrice_Bb[2]);
+                PlayerPrefs.SetString("Honey Bear", "Bought");
+                Debug.Log("너는 허니곰을 블루베리로 샀다!");
+            }
+            else
+            {
+                Debug.Log("너는 허니곰을 사기에는 블루베리가 부족하다...");
+            }
         }
         else
         {
-            Debug.Log("너는 세번째 곰을 사기에는 블루베리가 부족하다...");
+            Debug.Log("이미 길들인 곰이다.");
         }
     }
 
-    public void CanBuy3stBearByHoney()
+    public void CanBuyHoneyBearByHoney()
     {
-        if (Honey >= BearPrice_H[2])
+        if (PlayerPrefs.GetString("Honey Bear") != "Bought")
         {
-            PlayerPrefs.SetInt("Honey", PlayerPrefs.GetInt("Honey") - BearPrice_H[2]);
-            Debug.Log("너는 세번째 곰을 꿀로 샀다!");
+            if (Honey >= BearPrice_H[2])
+            {
+                PlayerPrefs.SetInt("Honey", PlayerPrefs.GetInt("Honey") - BearPrice_H[2]);
+                PlayerPrefs.SetString("Honey Bear", "Bought");
+                Debug.Log("너는 허니곰을 꿀로 샀다!");
+            }
+            else
+            {
+                Debug.Log("너는 허니곰을 사기에는 꿀이 부족하다...");
+            }
         }
         else
         {
-            Debug.Log("너는 세번째 곰을 사기에는 꿀이 부족하다...");
+            Debug.Log("이미 길들인 곰이다.");
         }
     }
 
-    public void CanBuyBear(int WhatBear, int BlueberryPrice, bool IsBlueberry)
+    public void GoToStartScene()
     {
-        switch (WhatBear)
-        {
-            case 1:
-                if (IsBlueberry)
-                {
-                    if (Blueberry >= BlueberryPrice)
-                    {
-                        PlayerPrefs.SetInt("Blueberry", Blueberry - BlueberryPrice);
-                    }
-                }
-                else
-                {
-                    if (Honey >= BlueberryPrice / 20)
-                    {
-                        PlayerPrefs.SetInt("Honey", Honey - BlueberryPrice / 20);
-                    }
-                }
-                break;
-            case 2:
-                if (IsBlueberry)
-                {
-                    if (Blueberry >= BlueberryPrice)
-                    {
-                        PlayerPrefs.SetInt("Blueberry", Blueberry - BlueberryPrice);
-                    }
-                }
-                else
-                {
-                    if (Honey >= BlueberryPrice / 20)
-                    {
-                        PlayerPrefs.SetInt("Honey", Honey - BlueberryPrice / 20);
-                    }
-                }
-                break;
-            case 3:
-                if (IsBlueberry)
-                {
-                    if (Blueberry >= BlueberryPrice)
-                    {
-                        PlayerPrefs.SetInt("Blueberry", Blueberry - BlueberryPrice);
-                    }
-                }
-                else
-                {
-                    if (Honey >= BlueberryPrice / 20)
-                    {
-                        PlayerPrefs.SetInt("Honey", Honey - BlueberryPrice / 20);
-                    }
-                }
-                break;
-            default:
-                Debug.Log("Something wrong with buying Bear");
-                break;
-        }
+        SceneManager.LoadScene("Start");
     }
 }
