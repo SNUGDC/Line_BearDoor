@@ -8,6 +8,7 @@ public class ShopController : MonoBehaviour
 {
     public int[] BearPrice_Bb;
     public int[] BearPrice_H;
+    public GameObject[] AlreadyBuyPanel;
 
     public Text BlueberryText;
     public Text HoneyText;
@@ -15,12 +16,32 @@ public class ShopController : MonoBehaviour
     private int Blueberry;
     private int Honey;
 
+    private void Start()
+    {
+        AlreadyBuyPanel[0].SetActive(false);
+        AlreadyBuyPanel[1].SetActive(false);
+        AlreadyBuyPanel[2].SetActive(false);
+    }
+
     private void Update()
     {
         BlueberryText.text = HowMuchBlueberryHave().ToString();
         Blueberry = HowMuchBlueberryHave();
         HoneyText.text = HowMuchHoneyHave().ToString();
         Honey = HowMuchHoneyHave();
+
+        if (PlayerPrefs.GetString("Pink Bear") == "Bought")
+        {
+            AlreadyBuyPanel[0].SetActive(true);
+        }
+        if (PlayerPrefs.GetString("Angry Bear") == "Bought")
+        {
+            AlreadyBuyPanel[1].SetActive(true);
+        }
+        if (PlayerPrefs.GetString("Honey Bear") == "Bought")
+        {
+            AlreadyBuyPanel[2].SetActive(true);
+        }
     }
 
     private int HowMuchBlueberryHave()

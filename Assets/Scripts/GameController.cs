@@ -45,6 +45,7 @@ public class GameController : MonoBehaviour {
     public Button leavebutton;
     public Text scoreText;
     public Text gameoverText;
+    public Text BestScore;
     public float score;
     public bool isStoped = false; //for Debugging
     public GameObject Bear;
@@ -87,8 +88,7 @@ public class GameController : MonoBehaviour {
             StartCoroutine(Countdown());
         }
     }
-	
-	// Update is called once per frame
+
 	void Update ()
     {
     }
@@ -218,6 +218,25 @@ public class GameController : MonoBehaviour {
     {
         scoreText.text = " " + score;
         gameoverText.text = score.ToString();
+
+        if (PlayerPrefs.HasKey("Best Score"))
+        {
+            if (PlayerPrefs.GetInt("Best Score") < score)
+            {
+                PlayerPrefs.SetInt("Best Score", (int)score);
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Best Score", (int)score);
+        }
+
+        BestScore.text = PlayerPrefs.GetInt("Best Score").ToString();
+    }
+
+    public void GoToStartScene()
+    {
+        SceneManager.LoadScene("Start");
     }
 }
 

@@ -8,8 +8,10 @@ public class StartSceneController : MonoBehaviour
 {
     public Sprite[] BearImage;
 
+    public GameObject NotBuyBear;
     public GameObject RightArrow;
     public GameObject LeftArrow;
+    public GameObject StartButton;
     public Image Bear;
 
     private int BearNumber = 0;
@@ -21,6 +23,7 @@ public class StartSceneController : MonoBehaviour
 
     private void Update()
     {
+        DidYouBuyThisBear();
     }
 
     public void GoToShop()
@@ -60,6 +63,55 @@ public class StartSceneController : MonoBehaviour
         if (BearNumber == 0)
         {
             LeftArrow.SetActive(false);
+        }
+    }
+
+    private void DidYouBuyThisBear()
+    {
+        switch (BearNumber)
+        {
+            case 0:
+                NotBuyBear.SetActive(false);
+                break;
+            case 1:
+                if (PlayerPrefs.GetString("Pink Bear") != "Bought")
+                {
+                    NotBuyBear.SetActive(true);
+                    StartButton.SetActive(false);
+                }
+                else
+                {
+                    NotBuyBear.SetActive(false);
+                    StartButton.SetActive(true);
+                }
+                break;
+            case 2:
+                if (PlayerPrefs.GetString("Angry Bear") != "Bought")
+                {
+                    NotBuyBear.SetActive(true);
+                    StartButton.SetActive(false);
+                }
+                else
+                {
+                    NotBuyBear.SetActive(false);
+                    StartButton.SetActive(true);
+                }
+                break;
+            case 3:
+                if (PlayerPrefs.GetString("Honey Bear") != "Bought")
+                {
+                    NotBuyBear.SetActive(true);
+                    StartButton.SetActive(false);
+                }
+                else
+                {
+                    NotBuyBear.SetActive(false);
+                    StartButton.SetActive(true);
+                }
+                break;
+            default:
+                Debug.Log("Something is Wrong");
+                break;
         }
     }
 }
