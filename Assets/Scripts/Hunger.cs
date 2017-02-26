@@ -13,10 +13,13 @@ public class Hunger : MonoBehaviour {
     public GameObject gameover;
     public float HpLosePerSec;
 
+    private int BearNumber;
+
     DoorSpawn doorSpawn;
     
     void Start()
     {
+        BearNumber = PlayerPrefs.GetInt("Bear Number");
         doorSpawn = GetComponent<DoorSpawn>();
 		restart_button.onClick.AddListener(RestartOnClick);
 		home_button.onClick.AddListener(HomeOnClick);
@@ -46,7 +49,7 @@ public class Hunger : MonoBehaviour {
     void OnGameOver()
     {
         gameover.gameObject.SetActive(true);
-        GetComponent<GameController>().Bear.GetComponent<Animator>().enabled = false;
+        GetComponent<GameController>().Bear[BearNumber].GetComponent<Animator>().enabled = false;
         GetComponent<RoadSpawn>().enabled = false;
         GetComponent<TreeSpawn>().enabled = false;
     }

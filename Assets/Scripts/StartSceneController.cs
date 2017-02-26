@@ -114,4 +114,10 @@ public class StartSceneController : MonoBehaviour
                 break;
         }
     }
+
+    public void GameStart()
+    {
+        PlayerPrefs.SetInt("Bear Number", BearNumber);
+        SceneManager.LoadScene("Game");
+    }
 }

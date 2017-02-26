@@ -39,7 +39,9 @@ public class LevelContext
 }
 
 public class GameController : MonoBehaviour {
-    
+
+    public GameObject[] Bear;
+
     public Text countdown;
     public Image pause_popup;
     public Button leavebutton;
@@ -48,9 +50,9 @@ public class GameController : MonoBehaviour {
     public Text BestScore;
     public float score;
     public bool isStoped = false; //for Debugging
-    public GameObject Bear;
 
     private Button pausebutton;
+    private int BearNumber;
 
     SwipeManager mouseTest;
     DoorSpawn doorspawn;
@@ -68,6 +70,34 @@ public class GameController : MonoBehaviour {
 	void Awake()
     {
         Instance = this;
+
+        BearNumber = PlayerPrefs.GetInt("Bear Number");
+        switch (BearNumber)
+        {
+            case 0:
+                Bear[1].SetActive(false);
+                Bear[2].SetActive(false);
+                Bear[3].SetActive(false);
+                break;
+            case 1:
+                Bear[0].SetActive(false);
+                Bear[2].SetActive(false);
+                Bear[3].SetActive(false);
+                break;
+            case 2:
+                Bear[0].SetActive(false);
+                Bear[1].SetActive(false);
+                Bear[3].SetActive(false);
+                break;
+            case 3:
+                Bear[0].SetActive(false);
+                Bear[1].SetActive(false);
+                Bear[2].SetActive(false);
+                break;
+            default:
+                Debug.Log("Something is Wrong");
+                break;
+        }
 
         mouseTest = GetComponent<SwipeManager>();
         doorspawn = GetComponent<DoorSpawn>();
@@ -112,7 +142,7 @@ public class GameController : MonoBehaviour {
 
         mouseTest.swipeDirection = SwipeDirectionbyMouse.NONE;
         countdown.gameObject.SetActive(true);
-        Bear.GetComponent<Animator>().enabled = false;
+        Bear[BearNumber].GetComponent<Animator>().enabled = false;
         while (i>0)
         {
             countdown.text = i.ToString();
@@ -122,7 +152,7 @@ public class GameController : MonoBehaviour {
         if (i == 0)
 		{
 			countdown.gameObject.SetActive(false);
-            Bear.GetComponent<Animator>().enabled = true;
+            Bear[BearNumber].GetComponent<Animator>().enabled = true;
             ResumeWorld();
 		}
 	}
