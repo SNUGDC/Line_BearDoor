@@ -15,7 +15,7 @@ public class DoorComponent : MonoBehaviour {
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(arrow);
         }
     }
 }

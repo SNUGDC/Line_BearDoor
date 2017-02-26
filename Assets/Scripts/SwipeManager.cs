@@ -27,9 +27,6 @@ public class SwipeManager : MonoBehaviour {
     float swipeTerm = 0;
     public int framePerSwipeTerm;
 
-    public Text angleText;
-    public Text circleDirectionText;
-
     void Start() {
         Instance = this;
     }
@@ -70,8 +67,6 @@ public class SwipeManager : MonoBehaviour {
 
         if (Input.GetMouseButtonUp(0))
         {
-            Debug.Log("angle : " + angle);
-            angleText.text = "angle : " + angle;
             int dirCount = circleDirection.Count();
             if (angle >= minAngle)
             {
@@ -83,7 +78,6 @@ public class SwipeManager : MonoBehaviour {
                     if (registeredGroup.Key)
                     {
                         swipeDirection = SwipeDirectionbyMouse.ClockWise;
-                        circleDirectionText.text = "ClockWise";
                         ResetDirection();
                         GetComponent<DoorSpawn>().SwipeDoor();
                         return;
@@ -91,7 +85,6 @@ public class SwipeManager : MonoBehaviour {
                     else
                     {
                         swipeDirection = SwipeDirectionbyMouse.CounterClockWise;
-                        circleDirectionText.text = "CounterClockWise";
                         ResetDirection();
                         GetComponent<DoorSpawn>().SwipeDoor();
                         return;
@@ -101,8 +94,6 @@ public class SwipeManager : MonoBehaviour {
 
             ResetDirection();
             DirectionChoose();
-            angleText.text = "";
-            circleDirectionText.text = "";
             GetComponent<DoorSpawn>().SwipeDoor();
         }
     }
