@@ -43,11 +43,11 @@ public class DoorSpawn : MonoBehaviour {
             Door randomDoor = null;
             if(GameController.Instance.currentLevel.combo < 5)
             {
-                randomDoor = doors[UnityEngine.Random.Range(0,3)];
+                randomDoor = doors[UnityEngine.Random.Range(0,9)];
             }
             else if(GameController.Instance.currentLevel.combo < 10)
             {
-                randomDoor = doors[UnityEngine.Random.Range(0,3)];
+                randomDoor = doors[UnityEngine.Random.Range(0,9)];
             }
             else
             {
