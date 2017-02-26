@@ -177,42 +177,38 @@ public class GameController : MonoBehaviour {
         {
             if (dir == SwipeDirectionbyMouse.LEFT)
             {
-                score += (currentLevel.Doorspeed * 100000 / 3) * 1;
+                score += ((Instance.currentLevel.combo / 5) + 1) * 50;
             }
             else if (dir == SwipeDirectionbyMouse.RIGHT)
             {
-                score += (currentLevel.Doorspeed * 100000 / 3) * 2;
+                score += ((Instance.currentLevel.combo / 5) + 1) * 50;
             }
             else if (dir == SwipeDirectionbyMouse.UP)
             {
-                score += (currentLevel.Doorspeed * 100000 / 3) * 3;
-            }
-            else if (dir == SwipeDirectionbyMouse.NONE)
-            {
-                score += (currentLevel.Doorspeed * 100000 / 3) * 4;
+                score += ((Instance.currentLevel.combo / 5) + 1) * 50;
             }
             else if (dir == SwipeDirectionbyMouse.ClockWise)
             {
-                score += (currentLevel.Doorspeed * 100000 / 3) * 4;//임시
+                score += ((Instance.currentLevel.combo / 5) + 1) * 200;
             }
             else if (dir == SwipeDirectionbyMouse.CounterClockWise)
             {
-                score += (currentLevel.Doorspeed * 100000 / 3) * 4;//임시
+                score += ((Instance.currentLevel.combo / 5) + 1) * 200;
             }
         }
         else //reverse door일 경우
         {
             if (dir == SwipeDirectionbyMouse.RIGHT)
             {
-                score += (currentLevel.Doorspeed * 100000 / 3) * 5;
+                score += ((Instance.currentLevel.combo / 5) + 1) * 100;
             }
             else if (dir == SwipeDirectionbyMouse.LEFT)
             {
-                score += (currentLevel.Doorspeed * 100000 / 3) * 6f;
+                score += ((Instance.currentLevel.combo / 5) + 1) * 100;
             }
             else if (dir == SwipeDirectionbyMouse.DOWN)
             {
-                score += (currentLevel.Doorspeed * 100000 / 3) * 7f;
+                score += ((Instance.currentLevel.combo / 5) + 1) * 100;
             }
         }
         UpdateScore();
