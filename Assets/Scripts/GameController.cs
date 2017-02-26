@@ -48,6 +48,7 @@ public class GameController : MonoBehaviour {
     public Text scoreText;
     public Text gameoverText;
     public Text BestScore;
+    public Text BlueberryGain;
     public float score;
     public bool isStoped = false; //for Debugging
 
@@ -262,11 +263,14 @@ public class GameController : MonoBehaviour {
         }
 
         BestScore.text = PlayerPrefs.GetInt("Best Score").ToString();
+
+        BlueberryGain.text = ((int)score / 100).ToString();
     }
 
     public void GoToStartScene()
     {
         SceneManager.LoadScene("Start");
+        PlayerPrefs.SetInt("Blueberry", PlayerPrefs.GetInt("Blueberry") + ((int)score / 100));
     }
 }
 
