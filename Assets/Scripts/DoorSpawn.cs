@@ -67,7 +67,7 @@ public class DoorSpawn : MonoBehaviour {
             if (swipe.swipeDirection == doorDir)
             {
                 Debug.Log("Correct!");
-                Destroy(newDoor.arrow);
+                newDoor.Correct();
                 gameController.AddScore(newDoor.direction);
                 isCorrect = true;
                 swipe.directionChosen = false;
@@ -81,7 +81,7 @@ public class DoorSpawn : MonoBehaviour {
                 swipe.directionChosen = false;
                 if (newDoor.direction == SwipeDirectionbyMouse.NONE)
                 {
-                    Destroy(newDoor.arrow);
+                    newDoor.Correct();
                 }
                 swipe.swipeDirection = SwipeDirectionbyMouse.NONE;
             }
