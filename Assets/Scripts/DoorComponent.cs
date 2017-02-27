@@ -12,6 +12,7 @@ public class DoorComponent : MonoBehaviour {
         if(direction == SwipeDirectionbyMouse.ClockWise || direction == SwipeDirectionbyMouse.CounterClockWise)
         {
             GetComponent<Animator>().SetTrigger("Correct");
+            Destroy(arrow);
         }
         else
         {
