@@ -21,12 +21,12 @@ public class LevelContext
 
     public void IncreaseLevel()
     {
-        if (combo < 15)
+        if (combo < 10)
         {
             this.combo++;
         }
 
-        Doorspeed = initialSpeed + combo / 5 * initialSpeed * 0.2f;
+        Doorspeed = initialSpeed + combo / 5 * initialSpeed * 0.5f;
         Debug.Log(combo);
     }
     public void ResetLevel()
