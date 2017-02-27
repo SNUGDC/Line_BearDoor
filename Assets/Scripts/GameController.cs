@@ -26,7 +26,7 @@ public class LevelContext
             this.combo++;
         }
 
-        Doorspeed = initialSpeed + combo / 5 * initialSpeed * 0.5f;
+        Doorspeed = initialSpeed + combo / 5 * initialSpeed * 0.25f;
     }
     public void ResetLevel()
     {
@@ -65,6 +65,8 @@ public class GameController : MonoBehaviour {
 
     public float initialDoorSpeed;
     float doorSpeed;
+    float blueberryRatio =100;
+    float hp = 1000;
     public float initialHp;
 
 	void Awake()
@@ -80,6 +82,8 @@ public class GameController : MonoBehaviour {
                 Bear[2].SetActive(false);
                 Bear[3].SetActive(false);
                 doorSpeed = initialDoorSpeed;
+                blueberryRatio = 100;
+                hp = initialHp;
                 break;
             case 1:
                 Bear[0].SetActive(false);
@@ -87,6 +91,8 @@ public class GameController : MonoBehaviour {
                 Bear[2].SetActive(false);
                 Bear[3].SetActive(false);
                 doorSpeed = initialDoorSpeed;
+                blueberryRatio = 100;
+                hp = initialHp * 1.2f;
                 break;
             case 2:
                 Bear[0].SetActive(false);
@@ -94,6 +100,8 @@ public class GameController : MonoBehaviour {
                 Bear[2].SetActive(true);
                 Bear[3].SetActive(false);
                 doorSpeed = initialDoorSpeed + 0.2f;
+                blueberryRatio = 100;
+                hp = initialHp;
                 break;
             case 3:
                 Bear[0].SetActive(false);
@@ -101,6 +109,8 @@ public class GameController : MonoBehaviour {
                 Bear[2].SetActive(false);
                 Bear[3].SetActive(true);
                 doorSpeed = initialDoorSpeed;
+                blueberryRatio = 80;
+                hp = initialHp;
                 break;
             default:
                 Debug.Log("Something is Wrong");
@@ -111,7 +121,7 @@ public class GameController : MonoBehaviour {
         doorspawn = GetComponent<DoorSpawn>();
         treespawn = GetComponent<TreeSpawn>();
         roadspawn = GetComponent<RoadSpawn>();
-        currentLevel = new LevelContext(doorSpeed, initialHp);
+        currentLevel = new LevelContext(doorSpeed, hp);
 
         pausebutton = GameObject.Find("Pause_Button").GetComponent<Button>();
         
