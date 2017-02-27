@@ -57,6 +57,9 @@ public class Hunger : MonoBehaviour {
     void RestartOnClick()
     {
         SceneManager.LoadScene("Game");
+
+        float score = GetComponent<GameController>().score;
+        PlayerPrefs.SetInt("Blueberry", PlayerPrefs.GetInt("Blueberry") + ((int)score / 100));
     }
 
     void HomeOnClick()
