@@ -287,7 +287,7 @@ public class GameController : MonoBehaviour {
     public void GoToStartScene()
     {
         SceneManager.LoadScene("Start");
-        PlayerPrefs.SetInt("Blueberry", PlayerPrefs.GetInt("Blueberry") + ((int)score / 100));
+        PlayerPrefs.SetInt("Blueberry", PlayerPrefs.GetInt("Blueberry") + ((int)score / (int)blueberryRatio));
     }
 }
 
