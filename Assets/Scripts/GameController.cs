@@ -137,10 +137,6 @@ public class GameController : MonoBehaviour {
         }
     }
 
-	void Update ()
-    {
-    }
-
     public void OpenPopup()
 	{
 		StopWorld();
@@ -288,6 +284,7 @@ public class GameController : MonoBehaviour {
     {
         SceneManager.LoadScene("Start");
         PlayerPrefs.SetInt("Blueberry", PlayerPrefs.GetInt("Blueberry") + ((int)score / (int)blueberryRatio));
+        FindObjectOfType<SoundManager>().StartMusic();
     }
 }
 

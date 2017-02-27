@@ -119,5 +119,6 @@ public class StartSceneController : MonoBehaviour
     {
         PlayerPrefs.SetInt("Bear Number", BearNumber);
         SceneManager.LoadScene("Game");
+        FindObjectOfType<SoundManager>().GameSceneMusic();
     }
 }
