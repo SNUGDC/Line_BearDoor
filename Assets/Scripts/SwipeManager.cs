@@ -56,7 +56,6 @@ public class SwipeManager : MonoBehaviour {
                 {
                     angle += Vector2.Angle(direction1, direction2);
                     circleDirection.Add(Vector3.Cross(direction1, direction2).normalized);
-                    Debug.Log(Vector3.Cross(direction1, direction2).normalized);
                 }
                 direction1 = direction2;
                 direction2 = tempPos - mousePos;

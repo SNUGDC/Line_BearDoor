@@ -22,8 +22,6 @@ public class DoorSpawn : MonoBehaviour {
     SwipeManager swipe;
     GameController gameController;
 
-    public int combo = 0;
-
     public static DoorSpawn Instance = null;
 
     public void Initialize() {
