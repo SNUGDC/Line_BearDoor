@@ -72,6 +72,7 @@ public class StartSceneController : MonoBehaviour
         {
             case 0:
                 NotBuyBear.SetActive(false);
+                StartButton.SetActive(true);
                 break;
             case 1:
                 if (PlayerPrefs.GetString("Pink Bear") != "Bought")

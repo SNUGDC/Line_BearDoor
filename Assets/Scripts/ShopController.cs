@@ -16,6 +16,8 @@ public class ShopController : MonoBehaviour
     private int Blueberry;
     private int Honey;
 
+    public GameObject NoMoneyPanel;
+
     private void Start()
     {
         AlreadyBuyPanel[0].SetActive(false);
@@ -86,7 +88,7 @@ public class ShopController : MonoBehaviour
             }
             else
             {
-                Debug.Log("너는 핑꾸곰을 사기에는 블루베리가 부족하다...");
+                StartCoroutine(NoMoney());
             }
         }
         else
@@ -107,7 +109,7 @@ public class ShopController : MonoBehaviour
             }
             else
             {
-                Debug.Log("너는 핑꾸곰을 사기에는 꿀이 부족하다...");
+                StartCoroutine(NoMoney());
             }
         }
         else
@@ -128,7 +130,7 @@ public class ShopController : MonoBehaviour
             }
             else
             {
-                Debug.Log("너는 화난곰을 사기에는 블루베리가 부족하다...");
+                StartCoroutine(NoMoney());
             }
         }
         else
@@ -149,7 +151,7 @@ public class ShopController : MonoBehaviour
             }
             else
             {
-                Debug.Log("너는 화난곰을 사기에는 꿀이 부족하다...");
+                StartCoroutine(NoMoney());
             }
         }
         else
@@ -170,7 +172,7 @@ public class ShopController : MonoBehaviour
             }
             else
             {
-                Debug.Log("너는 허니곰을 사기에는 블루베리가 부족하다...");
+                StartCoroutine(NoMoney());
             }
         }
         else
@@ -191,7 +193,7 @@ public class ShopController : MonoBehaviour
             }
             else
             {
-                Debug.Log("너는 허니곰을 사기에는 꿀이 부족하다...");
+                StartCoroutine(NoMoney());
             }
         }
         else
@@ -203,5 +205,12 @@ public class ShopController : MonoBehaviour
     public void GoToStartScene()
     {
         SceneManager.LoadScene("Start");
+    }
+
+    IEnumerator NoMoney()
+    {
+        NoMoneyPanel.SetActive(true);
+        yield return new WaitForRealSeconds(1);
+        NoMoneyPanel.SetActive(false);
     }
 }

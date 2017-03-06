@@ -48,20 +48,16 @@ public class DoorComponent : MonoBehaviour {
             case MoveDirection.None:
                 break;
             case MoveDirection.Left:
-                transform.Translate(-3 * Time.deltaTime, 0, 0);
+                transform.Translate(-4 * Time.deltaTime, 0, 0);
                 break;
             case MoveDirection.Right:
-                transform.Translate(3 * Time.deltaTime, 0, 0);
+                transform.Translate(4 * Time.deltaTime, 0, 0);
                 break;
             case MoveDirection.Up:
-                transform.Translate(0, 3 * Time.deltaTime, 0);
+                transform.Translate(0, 4 * Time.deltaTime, 0);
                 break;
             case MoveDirection.Down:
-                transform.Translate(0, -5 * Time.deltaTime, 0);
-                if (transform.rotation.x < 90)
-                {
-                    transform.Rotate(120 * Time.deltaTime, 0, 0);
-                }
+                transform.Translate(0, -4 * Time.deltaTime, 0);
                 break;
         }
     }

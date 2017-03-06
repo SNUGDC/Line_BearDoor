@@ -26,7 +26,7 @@ public class LevelContext
             this.combo++;
         }
 
-        Doorspeed = initialSpeed + combo / 5 * initialSpeed * 0.25f;
+        Doorspeed = initialSpeed + combo / 5 * initialSpeed * 0.2f;
     }
     public void ResetLevel()
     {
