@@ -5,11 +5,10 @@ using System.Linq;
 
 public enum SwipeDirectionbyMouse
 {
-    NONE = 0, LEFT, RIGHT, UP, DOWN
+    NONE=0, LEFT, RIGHT, UP, DOWN
 }
 
-public class SwipeManager : MonoBehaviour
-{
+public class SwipeManager : MonoBehaviour {
     public SwipeDirectionbyMouse swipeDirection;
     public bool directionChosen;
     public Vector2 startPos;
@@ -26,13 +25,11 @@ public class SwipeManager : MonoBehaviour
     public float minAngle = 0f;
     float swipeTerm = 0;
 
-    void Start()
-    {
+    void Start() {
         Instance = this;
     }
 
-    void Update()
-    {
+    void Update() {
         Swipe();
     }
 
@@ -49,7 +46,7 @@ public class SwipeManager : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             swipeTerm += Time.deltaTime;
-            if (swipeTerm > Time.deltaTime)
+            if(swipeTerm > Time.deltaTime)
             {
                 swipeTerm = 0;
                 Vector3 tempPos = Input.mousePosition;
@@ -63,7 +60,7 @@ public class SwipeManager : MonoBehaviour
                 direction2 = tempPos - mousePos;
                 mousePos = tempPos;
             }
-
+            
         }
 
         if (Input.GetMouseButtonUp(0))
