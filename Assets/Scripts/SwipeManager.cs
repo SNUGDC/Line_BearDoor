@@ -69,9 +69,7 @@ public class SwipeManager : MonoBehaviour {
             int dirCount = circleDirection.Count();
             if (angle >= minAngle)
             {
-                IGrouping<bool, Vector3> registeredGroup = circleDirection
-                    .GroupBy(a => IsClockWise(a))
-                    .Where(g => g.Count() > 0.8 * dirCount).FirstOrDefault();
+                IGrouping<bool, Vector3> registeredGroup = circleDirection.GroupBy(a => IsClockWise(a)).Where(g => g.Count() > 0.8 * dirCount).FirstOrDefault();
                 if (registeredGroup != null)
                 {
                     if (registeredGroup.Key)

@@ -7,16 +7,16 @@ using UnityEngine.SceneManagement;
 public class LevelContext
 {
     public float Doorspeed { get; set; }
-    public float initialSpeed;
-    public float Hunger;
+    public float initialDoorSpeed; // initialSpeed -> initialDoorSpeed
+    public float hungerPoint; // Hunger -> hungerPoint
 
     public int combo = 0;
 
-    public LevelContext(float speed, float hp)
+    public LevelContext(float doorSpeed, float hp) // speed -> doorSpeed
     {
-        this.Doorspeed = speed;
-        initialSpeed = speed;
-        this.Hunger = hp;
+        this.Doorspeed = doorSpeed;
+        initialDoorSpeed = doorSpeed;
+        this.hungerPoint = hp;
     }
 
     public void IncreaseLevel()
@@ -26,13 +26,13 @@ public class LevelContext
             this.combo++;
         }
 
-        Doorspeed = initialSpeed + combo / 5 * initialSpeed * 0.2f;
+        Doorspeed = initialDoorSpeed + combo / 5 * initialDoorSpeed * 0.2f;
     }
     public void ResetLevel()
     {
         combo = 0;
-        Doorspeed = initialSpeed;
-        Hunger -= 100;
+        Doorspeed = initialDoorSpeed;
+        hungerPoint -= 100;
     }
 }
 
@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour {
 
     public GameObject[] Bear;
 
-    public Text countdown;
+    public Text countdownText; //countdown -> countdownText
     public Image pause_popup;
     public Button leavebutton;
     public Text scoreText;
@@ -155,17 +155,17 @@ public class GameController : MonoBehaviour {
         float wait = 1.0f;
 
         mouseTest.swipeDirection = SwipeDirectionbyMouse.NONE;
-        countdown.gameObject.SetActive(true);
+        countdownText.gameObject.SetActive(true);
         Bear[BearNumber].GetComponent<Animator>().enabled = false;
         while (i>0)
         {
-            countdown.text = i.ToString();
+            countdownText.text = i.ToString();
             i--;
             yield return new WaitForRealSeconds(wait);
         }
         if (i == 0)
 		{
-			countdown.gameObject.SetActive(false);
+			countdownText.gameObject.SetActive(false);
             Bear[BearNumber].GetComponent<Animator>().enabled = true;
             ResumeWorld();
 		}

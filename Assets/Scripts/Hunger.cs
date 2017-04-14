@@ -31,7 +31,7 @@ public class Hunger : MonoBehaviour {
         {
             if (GetComponent<GameController>().isStoped == false)
             {
-                GameController.Instance.currentLevel.Hunger -= HpLosePerSec * Time.deltaTime;
+                GameController.Instance.currentLevel.hungerPoint -= HpLosePerSec * Time.deltaTime;
             }
         }
         if(doorSpawn.newDoor == null)
@@ -39,11 +39,11 @@ public class Hunger : MonoBehaviour {
             doorSpawn.SpawnWaves();
         }
 
-        if(GameController.Instance.currentLevel.Hunger <= 0)
+        if(GameController.Instance.currentLevel.hungerPoint <= 0)
         {
             OnGameOver();
         }
-        hungerbar.rectTransform.sizeDelta = new Vector2(GameController.Instance.currentLevel.Hunger, hungerbar.rectTransform.sizeDelta.y);
+        hungerbar.rectTransform.sizeDelta = new Vector2(GameController.Instance.currentLevel.hungerPoint, hungerbar.rectTransform.sizeDelta.y);
     }
 
     void OnGameOver()

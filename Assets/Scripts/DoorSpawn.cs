@@ -36,7 +36,7 @@ public class DoorSpawn : MonoBehaviour {
 
     public void SpawnWaves()
     {
-        if (GameController.Instance.currentLevel.Hunger > 0)
+        if (GameController.Instance.currentLevel.hungerPoint > 0)
         {
             Door randomDoor = null;
             if(GameController.Instance.currentLevel.combo < 5)
