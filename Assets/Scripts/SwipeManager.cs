@@ -72,7 +72,9 @@ public class SwipeManager : MonoBehaviour
             int dirCount = circleDirection.Count();
             if (angle >= minAngle)
             {
-                IGrouping<bool, Vector3> registeredGroup = circleDirection.GroupBy(a => a == new Vector3 (0,0,-1)).Where(g => g.Count() > 0.8 * dirCount).FirstOrDefault();
+                IGrouping<bool, Vector3> registeredGroup = circleDirection
+                    .GroupBy(a => IsClockWise(a))
+                    .Where(g => g.Count() > 0.8 * dirCount).FirstOrDefault();
                 if (registeredGroup != null)
                 {
                     if (registeredGroup.Key)
@@ -96,6 +98,11 @@ public class SwipeManager : MonoBehaviour
             DirectionChoose();
             GetComponent<DoorSpawn>().SwipeDoor();
         }
+    }
+
+    bool IsClockWise(Vector3 normalVector)
+    {
+        return normalVector == new Vector3(0, 0, -1);
     }
 
     void ResetDirection()
