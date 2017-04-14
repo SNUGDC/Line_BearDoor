@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public enum SwipeDirectionbyMouse
 {
-    NONE=0, LEFT, RIGHT, UP, DOWN
+    NONE=0, LEFT, RIGHT, UP, DOWN , ClockWise, CounterClockWise
 }
 
 public class SwipeManager : MonoBehaviour {
@@ -24,6 +25,7 @@ public class SwipeManager : MonoBehaviour {
     float angle = 0;
     public float minAngle = 0f;
     float swipeTerm = 0;
+    public int framePerSwipeTerm;
 
     void Start() {
         Instance = this;
@@ -46,7 +48,7 @@ public class SwipeManager : MonoBehaviour {
         if (Input.GetMouseButton(0))
         {
             swipeTerm += Time.deltaTime;
-            if(swipeTerm > Time.deltaTime)
+            if(swipeTerm > Time.deltaTime * framePerSwipeTerm)
             {
                 swipeTerm = 0;
                 Vector3 tempPos = Input.mousePosition;
@@ -54,7 +56,6 @@ public class SwipeManager : MonoBehaviour {
                 {
                     angle += Vector2.Angle(direction1, direction2);
                     circleDirection.Add(Vector3.Cross(direction1, direction2).normalized);
-                    Debug.Log(Vector3.Cross(direction1, direction2).normalized);
                 }
                 direction1 = direction2;
                 direction2 = tempPos - mousePos;
@@ -65,33 +66,52 @@ public class SwipeManager : MonoBehaviour {
 
         if (Input.GetMouseButtonUp(0))
         {
-            Debug.Log("angle : " + angle);
-            if (circleDirection.Any(i => i != circleDirection[0]))
+            int dirCount = circleDirection.Count();
+            if (angle >= minAngle)
             {
-            }
-            else if (angle >= minAngle)
-            {
-                if (circleDirection[0] == new Vector3(0, 0, -1))
+                IGrouping<bool, Vector3> registeredGroup = circleDirection
+                    .GroupBy(a => IsClockWise(a))
+                    .Where(g => g.Count() > 0.8 * dirCount).FirstOrDefault();
+                if (registeredGroup != null)
                 {
-                    Debug.Log("ClockWise");
-                }
-                if (circleDirection[0] == new Vector3(0, 0, 1))
-                {
-                    Debug.Log("AntiClockWise");
+                    if (registeredGroup.Key)
+                    {
+                        swipeDirection = SwipeDirectionbyMouse.ClockWise;
+                        ResetDirection();
+                        GetComponent<DoorSpawn>().SwipeDoor();
+                        return;
+                    }
+                    else
+                    {
+                        swipeDirection = SwipeDirectionbyMouse.CounterClockWise;
+                        ResetDirection();
+                        GetComponent<DoorSpawn>().SwipeDoor();
+                        return;
+                    }
                 }
             }
-            angle = 0;
-            swipeTerm = 0;
-            direction1 = Vector3.zero;
-            direction2 = Vector3.zero;
-            mousePos = Vector3.zero;
-            circleDirection.Clear();
-            Vector2 mousePositionV2 = Input.mousePosition;
 
-            direction = mousePositionV2 - startPos;
+            ResetDirection();
             DirectionChoose();
             GetComponent<DoorSpawn>().SwipeDoor();
         }
+    }
+    
+    bool IsClockWise(Vector3 normalVector)
+    {
+        return normalVector == new Vector3(0, 0, -1);
+    }
+
+    void ResetDirection()
+    {
+        Vector2 mousePositionV2 = Input.mousePosition;
+        angle = 0;
+        swipeTerm = 0;
+        direction1 = Vector3.zero;
+        direction2 = Vector3.zero;
+        mousePos = Vector3.zero;
+        circleDirection.Clear();
+        direction = mousePositionV2 - startPos;
     }
 
     void DirectionChoose()
@@ -118,3 +138,5 @@ public class SwipeManager : MonoBehaviour {
         }
     }
 }
+    
+
