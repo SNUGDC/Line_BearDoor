@@ -2306,7 +2306,7 @@ MonoBehaviour:
   - {fileID: 220561938}
   - {fileID: 939488579}
   - {fileID: 225321079}
-  countdown: {fileID: 480288409}
+  countdownText: {fileID: 480288409}
   pause_popup: {fileID: 1859672244}
   leavebutton: {fileID: 1053209664}
   scoreText: {fileID: 1258995286}
